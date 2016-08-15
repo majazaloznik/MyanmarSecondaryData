@@ -64,9 +64,39 @@ ShpMMRTownship <- readOGR(dsn=map.path, "myanmar_township_boundaries")
 # varz <- colnames(estimates.data)
 # save(varz, file= "sources/data/clean/census.pop.varz.RData")
 
-## 02. merge map and data, save
+## 01.2 census - household based dataset
+###############################################################################
+# data.path <- "sources/data/original"
+# # data.url <-paste0("http://www.themimu.info/sites/themimu.info/files/documents/",
+# #                   "BaselineData_Census_Dataset_Township_MIMU_16Jun2016_ENG.xlsx")
+# data.location <- paste(data.path, "BaselineData_Census_Dataset_Township_MIMU_16Jun2016_ENG.xlsx", sep="/")
+# # download.file(data.url, data.location, mode = "wb")
+# household.data <- read_excel(data.location, sheet = 2, skip=1 )
+# ## right, so this table has a 2 row-header, which makes importing directly
+# ## pretty useless, as the column names become useless.
+# ## so need to first fill in the NAs, but..
+# ## some manual cleaning 
+# colnames(household.data)[7:10] <- paste(colnames(household.data)[8], colnames(household.data)[9])
+# colnames(household.data)[11:12] <- paste(colnames(household.data)[11], colnames(household.data)[12])
+# 
+# colnames(household.data)[14:123] <- zoo::na.locf(colnames(household.data)[14:123], from.last=TRUE)
+# # merge with 2 row of header and remove it from data
+# colnames(household.data) <- paste(colnames(household.data), household.data[1,], sep=" - ")
+# household.data<- household.data[-1,]
+# # just fix name in col 13:
+# colnames(household.data)[13] <- "Mean household size"
+# 
+# # now we have to change the col types back to numeric
+# household.data[, c(7:123)] <- sapply(household.data[, c(7:123)], as.numeric)
+# # save clean table
+# write.csv(household.data, file = "sources/data/clean/census.household.csv")
+# # als save clean column names
+# varz <- colnames(household.data)
+# save(varz, file= "sources/data/clean/census.hh.varz.RData")
+
+## 02. merge map and pop.data, save
 ###############################################################################
 # ShpMMRTownship@data <- left_join(ShpMMRTownship@data, estimates.data, by = c("TS_PCODE"="MIMU...Township.Pcode"))
+# ShpMMRTownship@data <- left_join(ShpMMRTownship@data, household.data, by = c("TS_PCODE"="MIMU - Township Pcode"))
 # save(ShpMMRTownship, file = "sources/data/clean/pop.map.RData")
-
-
+range(unlist(ShpMMRTownship@data[306]), rm.na = TRUE)
