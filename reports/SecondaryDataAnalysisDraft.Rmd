@@ -1,0 +1,106 @@
+---
+title: "Myanmar Secondary Data Analysis - Draft Chapter"
+author: mz
+bibliography: ../sources/myanmar-mz.bib
+output: 
+ word_document:
+  reference_docx: StyleReference.docx
+  fig_width: 5
+  fig_height: 4.5
+  fig_caption: true
+ 
+---
+```{r setup, include = FALSE }
+require(rgdal)
+require(RColorBrewer)
+require(classInt)
+load(file = "../sources/data/clean/pop.map.RData")
+source("../analysis/scripts/02-Functions.R")
+```
+_This is a draft outline of the secondary data analysis chapter for the Myanmar ageing farmers report. Tentative headings are based on SH email 11.8.16._
+
+
+_This is tentative, with placeholders for possible charts/maps, and indication of available variables and datasets._
+
+# Demographic - social, economic
+
+## 2014 Census 
+
+The Myanmar Information Managment Unit is a well harmonized online resource for both cleaned up census data and GIS resources to match the administrative levels used in the 2014 census. [@MIMU2014]
+
+### Population Based Dataset - Township level data
+
+There are 330 townships - or rather there were that many in the 2014 census - for each of which almost 280 population aggregate variables are available. The list of variables is at the end of this document. 
+
+Figure 1 is just a quick map of all the 330 townships, highlighting the two of special interest, and scatterplot of township level data, with the relevant areas highlighted. 
+
+Any of these variables can be mapped, or plotted against eachother, like e.g. the ones in Figure 2. 
+
+
+```{r fig_townships, include = TRUE, echo = FALSE, results="hide", warning = FALSE, fig.width=8, figh.height=8,fig.keep='high', fig.cap="Figure 1 left: Map of 330 Myanmar townships with Yangon and Nay Pyi Taw towhnsips highlighted; right: township level ecological correlation between sex ratios and old age (65+) dependency ratios. "}
+m <- cbind(c(1,1), c(2,2), c(2,2))
+layout(m)
+par(mar = c(0,0,0,0))
+plot(ShpMMRTownship)
+plot(ShpMMRTownship[ShpMMRTownship@data$ST %in% c("Yangon") ,], col="orange", add=TRUE)
+plot(ShpMMRTownship[ShpMMRTownship@data$ST %in% c("Naypyitaw  Council") ,], col="red", add=TRUE)
+par(mar = c(5.1, 4.1, 4.1, 2.1))
+plot(unlist(ShpMMRTownship@data[10+15]), unlist(ShpMMRTownship@data[31+15]),
+     xlab = "Sex ratio", ylab = "Old age dependency ratio")
+points(unlist(ShpMMRTownship@data[ShpMMRTownship@data$ST %in% c("Yangon") ,10+15]), 
+       unlist(ShpMMRTownship@data[ShpMMRTownship@data$ST %in% c("Yangon") ,31+15]),
+       col="orange", pch = 19)
+points(unlist(ShpMMRTownship@data[ShpMMRTownship@data$ST %in% c("Naypyitaw  Council") ,10+15]), 
+       unlist(ShpMMRTownship@data[ShpMMRTownship@data$ST %in% c("Naypyitaw  Council") ,31+15]),
+       col="red", pch = 19)
+legend("topright", col = c("red", "orange"), legend = c("Yangon", "Natpyitaw"), 
+       bty = "n", pch =19)
+```
+
+<br> 
+
+```{r fig_testmap, include = TRUE, echo = FALSE, results="hide", warning = FALSE, fig.width=8, figh.height=8,fig.keep='high', fig.cap="Figure 2: Test Map of Myanmar - left: township level, right: region/state level"}
+par(mar = c(0,0,0,0))
+par(mfrow = c(1,2))
+# rural sex ratio
+col <- FunMNTownMap(ShpMMRTownship@data$Rural.population...Sex.ratio,
+             10,
+             seq(0,200,20))
+legend("topright", fill=attr(col, "palette")[4:9], 
+       legend = names(attr(col, "table"))[4:9], bty="n",
+       title = "Rural sex ratio")
+
+# old age dependency ratio
+col <- FunMNTownMap(ShpMMRTownship@data$Selected.age.groups.and.dependency.ratios...Old.dependency.ratio,
+             5,
+             seq(0,25,5), pal = brewer.pal(9, "Blues"))
+legend("topright", fill=attr(col, "palette"), 
+       legend = names(attr(col, "table")), bty="n",
+       title = "Old age dependency ratio")
+
+
+```
+
+
+Of course all of these also be zoomed in to just the region of interest, and e.g. 
+
+
+### Household Based Dataset
+
+
+# Agricultural - food security, crops, land 
+#  Households - structure, income, vulnerability
+
+# Variables:
+
+Census population level variable list: 
+
+```{r}
+load("../sources/data/clean/census.pop.varz.RData")
+varz
+```
+<br>
+
+##### References
+
+<br>
