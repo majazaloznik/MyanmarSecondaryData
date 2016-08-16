@@ -94,6 +94,18 @@ ShpMMRTownship <- readOGR(dsn=map.path, "myanmar_township_boundaries")
 # varz <- colnames(household.data)
 # save(varz, file= "sources/data/clean/census.hh.varz.RData")
 
+
+
+## 01.3 IRRI world rice stats 
+###############################################################################
+ data.path <- "sources/data/original"
+# # data.url <-paste0("")
+ data.location <- paste(data.path, "IRRI-ALL-MYANMAR-DATA.xls", sep="/")
+# # download.file(data.url, data.location, mode = "wb")
+ irri.data <- read_excel(data.location, sheet = 1, skip=3 )
+irri.data$Value <- as.numeric(irri.data$Value)
+write.csv(irri.data, file = "sources/data/clean/irri.data.csv")
+
 ## 02. merge map and pop.data, save
 ###############################################################################
 # ShpMMRTownship@data <- left_join(ShpMMRTownship@data, estimates.data, by = c("TS_PCODE"="MIMU...Township.Pcode"))

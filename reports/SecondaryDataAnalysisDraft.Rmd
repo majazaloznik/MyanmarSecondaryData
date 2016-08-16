@@ -1,5 +1,5 @@
 ---
-title: "Myanmar Secondary Data Analysis - Draft Chapter"
+title: "Myanmar Secondary Data Analysis - Outline"
 author: mz
 bibliography: ../sources/myanmar-mz.bib
 output: 
@@ -8,7 +8,7 @@ output:
   fig_width: 5
   fig_height: 4.5
   fig_caption: true
- 
+  toc: true
 ---
 ```{r setup, include = FALSE }
 require(rgdal)
@@ -17,7 +17,7 @@ require(classInt)
 load(file = "../sources/data/clean/pop.map.RData")
 source("../analysis/scripts/02-Functions.R")
 ```
-_This is a draft outline of the secondary data analysis chapter for the Myanmar ageing farmers report. 
+_This is a draft outline of the secondary data analysis chapter for the Myanmar ageing farmers report._
 
 _This is tentative, with placeholders for possible charts/maps, and indication of available variables and datasets._
 
@@ -36,23 +36,23 @@ Figure 1 is just a quick map of all the 330 townships, highlighting the two of s
 Any of these variables can be mapped, or plotted against eachother, like e.g. the ones in Figure 2. 
 
 
-```{r fig_townships, include = TRUE, echo = FALSE, results="hide", warning = FALSE, fig.width=8, figh.height=8,fig.keep='high', fig.cap="Figure 1 left: Map of 330 Myanmar townships with Yangon and Nay Pyi Taw towhnsips highlighted; right: township level ecological correlation between sex ratios and old age (65+) dependency ratios. "}
+```{r fig_townships, include = TRUE, echo = FALSE, results="hide", warning = FALSE, fig.width=8, figh.height=8,fig.keep='high', fig.cap="Figure 1 left: Map of 330 Myanmar townships with Mandalay and Ayeyarwady towhnsips highlighted; right: township level ecological correlation between sex ratios and old age (65+) dependency ratios. "}
 m <- cbind(c(1,1), c(2,2), c(2,2))
 layout(m)
 par(mar = c(0,0,0,0))
 plot(ShpMMRTownship)
-plot(ShpMMRTownship[ShpMMRTownship@data$ST %in% c("Yangon") ,], col="orange", add=TRUE)
-plot(ShpMMRTownship[ShpMMRTownship@data$ST %in% c("Naypyitaw  Council") ,], col="red", add=TRUE)
+plot(ShpMMRTownship[ShpMMRTownship@data$ST %in% c("Mandalay") ,], col="orange", add=TRUE)
+plot(ShpMMRTownship[ShpMMRTownship@data$ST %in% c("Ayeyarwady") ,], col="red", add=TRUE)
 par(mar = c(5.1, 4.1, 4.1, 2.1))
 plot(unlist(ShpMMRTownship@data[10+15]), unlist(ShpMMRTownship@data[31+15]), col = "gray", pch = 19,
      xlab = "Sex ratio", ylab = "Old age dependency ratio")
-points(unlist(ShpMMRTownship@data[ShpMMRTownship@data$ST %in% c("Yangon") ,10+15]), 
-       unlist(ShpMMRTownship@data[ShpMMRTownship@data$ST %in% c("Yangon") ,31+15]),
+points(unlist(ShpMMRTownship@data[ShpMMRTownship@data$ST %in% c("Mandalay") ,10+15]), 
+       unlist(ShpMMRTownship@data[ShpMMRTownship@data$ST %in% c("Mandalay") ,31+15]),
        col="orange", pch = 19)
-points(unlist(ShpMMRTownship@data[ShpMMRTownship@data$ST %in% c("Naypyitaw  Council") ,10+15]), 
-       unlist(ShpMMRTownship@data[ShpMMRTownship@data$ST %in% c("Naypyitaw  Council") ,31+15]),
+points(unlist(ShpMMRTownship@data[ShpMMRTownship@data$ST %in% c("Ayeyarwady") ,10+15]), 
+       unlist(ShpMMRTownship@data[ShpMMRTownship@data$ST %in% c("Ayeyarwady") ,31+15]),
        col="red", pch = 19)
-legend("topright", col = c("red", "orange"), legend = c("Yangon", "Natpyitaw"), 
+legend("topright", col = c("red", "orange"), legend = c("Ayeyarwady", "Mandalay"), 
        bty = "n", pch =19)
 ```
 
@@ -81,19 +81,19 @@ legend("topright", fill=attr(col, "palette"),
 
 Of course all of these also be zoomed in to just the region of interest, and e.g. Figure 3 shows the cloropleth maps for literacy rates for all the townships in both the states of interest. 
 
-```{r fig_zoom_in, include = TRUE, echo = FALSE, results="hide", warning = FALSE, fig.width=8, figh.height=8,fig.keep='high', fig.cap="Figure 3: Zoom into Yangon townships on left (44) and Nay Pyi Taw townships on the right (8) on single variable - Literacy rate for both sexes"}
+```{r fig_zoom_in, include = TRUE, echo = FALSE, results="hide", warning = FALSE, fig.width=8, figh.height=8,fig.keep='high', fig.cap="Figure 3: Zoom into Mandalay townships on left (28) and Ayeyarwady townships on the right (26) on single variable - Literacy rate for both sexes"}
 par(mfrow = c(1,2))
-col <- FunMNTownMapY(unlist(ShpMMRTownship@data[55+15]),
-             n = 5,
-             seq(90,100,2), pal = brewer.pal(9, "Reds"),
+col <- FunMNTownMapS(var = 70, town = "Mandalay",
+             n = 6,
+             seq(88,100,2), pal = brewer.pal(9, "Reds"),
              mar = c(1,1,1,2))
-legend("topright", fill=attr(col, "palette"), 
+legend("topleft", fill=attr(col, "palette"), 
        legend = names(attr(col, "table")), bty="n",
        title = "Literacy rate")
 
-FunMNTownMapN(unlist(ShpMMRTownship@data[55+15]), 
-              n = 5,
-              seq(90,100,2), pal = brewer.pal(9, "Reds"),
+FunMNTownMapS(var = 70, town = "Ayeyarwady",
+             n = 6,
+              seq(88,100,2), pal = brewer.pal(9, "Reds"),
              mar = c(1,2,1,1))
 
 
@@ -107,36 +107,35 @@ All of this applies to the household level data as well. A list of the variables
 
 Of course a combination is also possible, as for example in Figure 4, which looks at the proportion of female headed households across the 330 townships, and also adds a zoomed map of both the Yangon region and Naypyitaw, and a histograms that let us compare the distribution within each of the regions with the distribution nationally.
 
-```{r fig_testmap, include = TRUE, echo = FALSE, results="hide", warning = FALSE, fig.width=8, figh.height=8,fig.keep='high', fig.cap="Figure 4: Proportion of households headed by women in 330 townships (left), in Nat Pyi Taw middle top and Yangon middle bottom, along with histograpms showing the relative distirbutions of each region compared to the national one. "}
+```{r fig_testmap, include = TRUE, echo = FALSE, results="hide", warning = FALSE, fig.width=8, figh.height=8,fig.keep='high', fig.cap="Figure 4: Average size of  in 330 townships (left), in Nat Pyi Taw middle top and Yangon middle bottom, along with histograpms showing the relative distirbutions of each region compared to the national one. "}
 m <- cbind(c(1,1), c(2,3), c(4,5))
 layout(m)
 
-col <- FunMNTownMap(unlist(ShpMMRTownship@data[306]),
-             n = 6,
-             seq(0,60,10), pal =  brewer.pal(9, "YlGn") )
+col <- FunMNTownMap(unlist(ShpMMRTownship@data[309]),
+             n = 8,
+             seq(3,7,.5), pal =  brewer.pal(9, "YlGn") )
 legend("bottomleft", fill=attr(col, "palette"), 
     legend = names(attr(col, "table")), bty="n",
      title = "% Female-headed HH")
-rect(95.51 ,19.38,96.86, 20.36, border = "red")
-rect(95.21 ,16.24, 97.24, 17.85, border = "red")
-
-FunMNTownMapN(unlist(ShpMMRTownship@data[306]),
-             n = 6,
-             seq(0,60,10), pal =  brewer.pal(9, "YlGn"),
-             mar = c(3,3,3,3))
+rect(93.40 ,20.05,98.32, 23.82, border = "red")
+rect(93.19 ,15.55, 97.07, 18.62, border = "red")
+FunMNTownMapS(var = 309, town = "Mandalay",
+             n = 8,
+             seq(3,7,.5), pal =  brewer.pal(9, "YlGn"),
+             mar = c(1,1,1,1))
 npt <- par("usr")
-FunMNTownMapY(unlist(ShpMMRTownship@data[306]),
-             n = 6,
-             seq(0,60,10), pal =  brewer.pal(9, "YlGn"),
+
+FunMNTownMapS(var = 309, town = "Ayeyarwady",
+             n = 8,
+             seq(3,7,.5), pal =  brewer.pal(9, "YlGn"),
              mar = c(1,1,1,1))
 yng <- par("usr")
-par(mar = c(3,1,3,1))
-FunMNTownHistN(306, main = "Nay Pyi Taw Female HH")
+par(mar = c(2,1,2,1))
 
-FunMNTownHistY(306, main = "Yangon Female HH")
+FunMNTownHistS(309, town = "Mandalay",  main = "Mandalay Average HH size", col = "orange")
+FunMNTownHistS(309, town = "Ayeyarwady",main = "Ayeyarwady Average HH size", col = "red")
 
 ```
-
 
 ### Occupation-Industry
 
@@ -181,21 +180,59 @@ Industry (16 categories, incl. " Agriculture, forestry and fishing"):
 
     
     
-    
+_e.g. we can do populaiton pyramids with eomployment struture etc with this stuff._
 
 
 
+## World Population Prospects
 
+_For population growth, age composition, dependency ratios etc. estimated 1950-2015, and projected until 2050 as well as urbanisation etc. there is the UN data [@UNPD2015]..._
 
 
 # Agricultural - food security, crops, land 
 
+## International Rice Research Institute
+
+International Rice Research Institute data on trends etc. [@IRRI2016] has statistics on production, yield etc. which can be plotted as trend line charts. List of variables in Appendix
+
+So for example here is rice yeild, export ( acdcording to the USDA and dotted also according to the FAO) and per capita consumption of rice over the whole period:
+
+```{r fig_irri, include = TRUE, echo = FALSE, results="hide", warning = FALSE, fig.width=8, figh.height=5,fig.keep='high', fig.cap="Figure 5: Some IRRI trends: Rice paddy yield (top), export quantitiy (middle) and per capita rice consumption (bottom).  "}
+irri.data <- read.csv("../sources/data/clean/irri.data.csv")
+
+par(mfrow=c(3,1))
+par(mar = c(3,4,1,1))
+plot(irri.data$Year[irri.data$Variable == "YIELD - PADDY"  ], 
+     irri.data$Value[irri.data$Variable == "YIELD - PADDY"  ], 
+     type = "l", xlim = c(1960, 2015), bty = "n", xlab = "",
+     ylab = "Yield", lwd = 2)
+plot(irri.data$Year[irri.data$Variable == "EXPORT QUANTITY"  &
+                      irri.data$Source == "USDA"], 
+     irri.data$Value[irri.data$Variable == "EXPORT QUANTITY" &
+                       irri.data$Source == "USDA" ] , 
+     type = "l", xlim = c(1960, 2015),
+     bty = "n", xlab = "",
+     ylab = "Export quantity", lwd = 2)
+lines(irri.data$Year[irri.data$Variable == "EXPORT QUANTITY"  &
+                      irri.data$Source == "FAO"], 
+     irri.data$Value[irri.data$Variable == "EXPORT QUANTITY" &
+                       irri.data$Source == "FAO" ] , 
+     type = "l", xlim = c(1960, 2015), lty = 3, lwd = 2)
+plot(irri.data$Year[irri.data$Variable == "RICE CONSUMPTION PER CAPITA"  ], 
+     irri.data$Value[irri.data$Variable == "RICE CONSUMPTION PER CAPITA"  ], 
+     type = "l", xlim = c(1960, 2015), bty = "n", xlab = "",
+     ylab = "Per capita consumption", lwd = 2)
+
+
+
+
+```
 
 # Appendix 1: Variables
 
 Census population level variable list: 
 
-```{r}
+```{r, echo = FALSE}
 load("../sources/data/clean/census.pop.varz.RData")
 varz
 ```
@@ -203,12 +240,17 @@ varz
 
 Census household level variable list: 
 
-```{r}
+```{r, echo = FALSE}
 load("../sources/data/clean/census.hh.varz.RData")
 varz
 ```
 <br>
 
+IRRI variable list
+
+```{r, echo = FALSE}
+unique(irri.data$Variable)
+```
 
 ##### References
 
