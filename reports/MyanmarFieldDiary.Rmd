@@ -1,0 +1,121 @@
+---
+title: "Myanmar Fieldwork - MZ"
+author: "mz"
+date: "24.11.2016"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+toc: yes
+word_document html_document: default
+---
+
+# Fieldwork Journal
+
+## Tuesday 22.11.2016 - Arrival in Yangon
+
+## Wednesday 23.11.2016 - Prep
+
+Prepared for meeting, worked on census brief, dealt with jet lag. 
+
+## Thursday 24.11.2016 - Meeting with MSR team
+  
+Met with Patrick Meza and Kay from MSR to discuss open questions re questionnaire, sampling and other issues. These are minuted below, whit the outstanding issues highlighted in bold, and listed at the end again for the attention of SH, GL and KH. 
+
+### Survey timeline
+
+MSR had provided us with a work plan and timeline in their EOI (page 6). As they had not heard anything to the contrary, they assumed we are sticking with it. That would have us receive the report 31. January 2017. 
+
+Assuming this is a bit late, we discussed the possibility of speeding it up. Subject to their confirmation of enumerator availability, and our approval of the questionnaire, they may be able to do the following:
+
+* Week of 28.11.-2.12. back translation of questionnaire complete, our approval granted;
+* Week of 5.12.-9.12. finalization of the sampling frame, training of the enumerators and pilot of the questionnaire
+* Week of 12.12. Data collection can commence and could be completed before New Year's
+* This would then allow delivery of final data mid January.
+
+This is to be confirmed by Patrik tomorrow. I was under the impression that this is the most that can be squeezed out of them, given that  Christmas holidays still have an effect on work schedules here, despite it being a Buddhist country. 
+
+**Is this timeline acceptable?**
+
+
+### Questionnaire
+
+#### Village level questionnaire
+
+At the village level the enumerators will collect the information about the village from the village person in charge. This will include the number of households, as well as the number of landless farmers, and the number of farmers. **Was that everything? **
+
+#### Household level questionnaire
+
+**Q4** Education levels. MSR provided their (local) categorization of education levels. [I think it was 1. not completed primary, 2. completed primary, .. unfinished college, finished college.] BUT they also had the category *"illiterate"*. Now this may be pedantic, but I don't think that should be in the same question, as it is not mutually exclusive with having had some education. So I asked them to i) yes, change to their categorization of education, and ii) but remove the illiterate option. 
+
+The question is however if we **do want to ask an illiteracy question?**In the census for example, everyone is asked "can XX read and write in any language". 
+
+**Q31** (has your land holding decreased) MSR suggest we add the options 4. confiscated by the government and 5. inheritance. 4 refers to the government confiscating land - usually with compensation - for rezoning, building etc. 5 in my understanding refers to what we already had as "gave away some land" - the point being that we would only count it as inheritance after you die (in which case you cannot answer our survey :) but they seem to call it inheritance even if you give it to your children while still alive. **Are we ok with adding confiscation, but not inheritance as a separate option?**
+
+**Q36** (person-days of labour) This is a question that should be manageable by the enumerators, but will require very clear explanation during training. But MSR are confident it will be OK. 
+
+**Q40, 43-46** (sources of knowledge, reasons for increase/decrease of yield and challenges individually/communally to farming). These are the four questions we wanted to get rankings from. We had a very long discussion about the wording and framing of these questions, in particular because of the danger that prompting would lead to recall bias. And on the other hand that non-prompting would lead to a preponderance of "other" answers, which would be difficult to code. 
+MSR suggested instead that the question flow gets effectively split into two:
+
+1. The options are listed to the respondent (in random order - this is simple with CAPI) and they are asked "whether it is a factor", making it a yes/no question
+
+2. Then they are asked which one is the most important one, and which one the second most important one. (And for questions 45 and 46 also the third most important one).
+
+That way they suggest we avoid the risk of recall bias, and get the ranking for the top options. **Is this OK for all four questions?**
+
+
+**Q46** (challenges to community). Kay wanted to add the option "labour too expensive". Now I think that from an economist's point of view this is the same as "shortage of labour to hire", so adding it as an extra option unnecessarily increases the length of this question. Instead we can simply change this second option to "Shortage of labour to hire or labour too expensive" if we agree these are synonymous. **Can we add labour price to labour shortage option?** 
+
+**Q53-54** (ownership of draught animals and machinery). The number "shared" is going to be minimal (LIFT data had single digits out of a sample of 4000), so probably not worth and can be safely removed. We can instead add a column for number "leased out". This seems reasonable. It would mean we have numbers owned, rented and rented out - which should pick up people that make a profit off renting out machinery. **Are we OK with replacing number shared with number leased?**
+
+**Q53** We should add cows/oxen as an option. **Yes?**
+
+**Q54** We added irrigation pump as an option (this is an option from the LIFT survey, and increases our water management coverage).
+
+**Q59-60** (inability to purchase machinery). They suggest adding i) not enough money and ii) inability to perform maintenance. They also think our option "field characteristics" won't really work in these parts (this was a reference to low/high land rice fields in VN). **Which of these options should we leave?**
+
+
+### Sampling frame
+
+MSR will rewrite their Appendix D to take the following into account:
+
+* Townships selected by PPS
+* village tracts selected by simple random
+* villages selected by PPS (very varying sizes!)
+* 20 interviews per village selected by systematic random, based on village level info on landless/non landless farmers. 
+
+Taking into account the 100/200 split of landless to non-landless, MSR also asked if we wouldn't want an additional  grouping of farmers into smallholders (under 5 acres) and large (over 5). I thought we would not, because:
+
+* we are prescribing the landless numbers in order to undersample [e.g. LIFT has 50% landless (Table 54, page 36)], we want some, but not too many. 
+* Of active farmers (the remaining 200 per region), we can expect to get a representative sample with the sampling scheme as it is. [e.g. LIFT has approx 30% large farms and 70% smallholders. ]
+* That would make it approx 60 large, 140 small in each region, but could vary based on actual composition instead of because of the sampling frame. 
+* a prior estimate of 30% is fine - no expectation of missing them, so unless that's too many, we don't have to do anything.
+
+** Do we stick with 100/200 or add an additional e.g. 100/150/50 split to the household sampling?** 
+
+They mentioned land-sharing arrangements as a third option that landless farmers may partake in, but thought it is probably a very small proportion, so maybe shouldn't worry about them?
+
+There was some confusion about the "75 % actively involved in farming". MSRs understanding is that all of the 200 left are "actively involved in farming", whether through managing or directly - as long as they own farmland. Unless this meant that we want a maximum of 25% landowners who rent out all of their land and are therefore not actively involved in farming? But that number is way too high? ** Is the "actively involved in farming" distinction an additional sampling sub group we want to have, and if yes, how does that relate if yes to previous question (small/large)?**
+
+Additionally we have the within household sampling, where they propose to go for the head of household or other responsible adult as the alternative. This is apparently a standard thing and will be written up in the new sampling frame. **Did we have any different wishes for respondents?**
+
+Overall they usually get a 80 percent response rate!
+
+### Next steps
+
+Based on our meeting today MSR will provide a revised questionnaire, a revised sampling plan, and a revised timeline by tomorrow - Friday 25.11. Any responses from you I will pass on to them asap, and should be included in tomorrow's version. 
+
+To recap the questions are:
+
+1. Is the proposed new timeline acceptable?
+2. Is there anything else to add to the village level info we need?
+3. Are we happy with their education categorization and do we want a separate literacy question?
+4. Are we OK with adding confiscation, but not inheritance as a separate option to Q31?
+5. Are we OK with the new "unprompted ranking" system for Q 40, 43-46?
+6. Can we expand the labour price to labour shortage option in Q46?
+7. For draught animals and machinery, are we OK with replacing number shared with number leased?
+8. Adding cows/oxen to Q53?
+9. What options do we want for Q59 and Q60?
+
+10.  Do we stick with 100/200 or add an additional e.g. 100/150/50 split to the household sampling? And do we have an even more additional split of the non-landless to take into account  farming activity?
+
