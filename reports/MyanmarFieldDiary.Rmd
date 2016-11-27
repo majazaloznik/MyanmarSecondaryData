@@ -3,9 +3,9 @@ title: "Myanmar Fieldwork - MZ"
 author: "mz"
 date: "24.11.2016"
 output:
+  word_document: default
   pdf_document: default
   html_document: default
-  word_document: default
 toc: yes
 word_document html_document: default
 ---
@@ -118,4 +118,130 @@ To recap the questions are:
 9. What options do we want for Q59 and Q60?
 
 10.  Do we stick with 100/200 or add an additional e.g. 100/150/50 split to the household sampling? And do we have an even more additional split of the non-landless to take into account  farming activity?
+
+## Friday 25.11.2016 No news
+
+## Saturday 26.11.2016 - updates
+
+Recieved responses from KH and SH on questions from Thu.
+
+### Consolidated comments from KH and SH:
+
+1. Is the proposed new timeline acceptable? 
+
+> *SH: will have to be*
+
+2. Is there anything else to add to the village level info we need?
+
+> *KH: population count*
+
+3. Are we happy with their education categorization and do we want a separate literacy question?
+
+> *KH: follow their advice on education*
+
+> *SH: follow their advice on illiterate, GH to confirm*
+
+4. Are we OK with adding confiscation, but not inheritance as a separate option to Q31?
+
+> *KH: Accept their advice on confiscation and inheritance.*
+
+> *SH: Include inheritance*
+
+5. Are we OK with the new "unprompted ranking" system for Q 40, 43-46?
+
+> *KH,  SH: OK*
+
+6. Can we expand the labour price to labour shortage option in Q46?
+
+> *KH: Yes*
+
+> *SH:  Add labour price*
+
+7. For draught animals and machinery, are we OK with replacing number shared with number leased?
+
+> *KH: Yes*
+
+8. Adding cows/oxen to Q53?
+
+> *KH:Yes*
+
+9. What options do we want for Q59 and Q60?
+
+> *SH: Leave all*
+
+10.  Do we stick with 100/200 or add an additional e.g. 100/150/50 split to the household sampling? And do we have an even more additional split of the non-landless to take into account  farming activity?
+
+> *KH: I think the 100/200 split and the 75% active farmers might refer to the same thing. We started with a suggestion of 100/200 for landless to farming - and then increased to 75%?  So we have to drop one of them. Check with GL*
+
+## Sunday 27.11.2016 - updates
+
+Travelled to Naypyitaw. 
+
+Received response from Patrick and new version of questionnaire. 
+
+### Comments on Kay's new version of questionnaire
+
+*taking into account SH and KH comments from yesterday* 
+
+
+Q2: Is it better for the age to be categorized - *NO, leave as single year*
+
+Q4: These are not mutually exclusive options. Option a) should be "never attended school"!
+(e.g. according to the census there are 4.3 million adults who never attended school, and 3.5 million who are illiterate. )
+<!--`r 28720000*0.142+4313000*0.067`-->
+
+Q15b: No, we wanted family and non-family split up, so:
+* family and relatives
+* friends and neighbours
+
+Q15e: Where did this come from? We did not discuss this option, did we?
+
+Q31: This question doensn't work anymore, how could a respondent answer c (confiscate) as the reason?
+
+Confiscation has to be added as a new row in the table.
+
+And option d) also cannot read "gave away", because that is the wording of the third row.
+
+Q36: Yes, this is correct
+
+Q40, 43:46. This is not what we discussed. We discussed the table Patrick showed, with the first column for Yes/No question, and then the question about which is the most important, and which the second (or third). 
+
+Q46: What happened to the labour price? Option b should read: "b. Shortage of labour to hire (or too expensive)"
+
+
+Q51: We did not discuss this, "Don't know"" cannot really be a prompt, it could only potentially be an answer (column)
+
+Q52: We did not discuss option d), and I don't understand what it means, can you please elaborate?
+
+Q53: New rows OK, but we also said to replace "number shared" column with "number leased out"
+
+Q54:  New rows OK, but we also said to replace "number shared" column with "number leased out"
+
+Q59;Q60: Cannot have an open ended question on a Likert scale question.
+
+
+### Communication:
+
+These questionnaire comments have been communicated to MSR, and bcc-ed to SH, KH, GL, KP. Most recent questionnaire file version is `Draft Eng Questionaries V11.docx`.
+
+MSR have communicated a new timeline, which shifts several things around at the start, but ends up with the same end delivery data of 31.1. as before... 
+
+Tasks | Completion Date
+-------------------------------------------------------------------|-------
+Collect necessary information on the target areas | Nov 30
+Hold initial discussions with the Principal Investigator and HelpAge | Dec 2
+Review and comment on draft questionnaire | 6 Dec
+Sampling plan for the field survey | 8 Dec
+Translate questionnaire | 9 Dec
+Train enumerators and supervisors | 12-14 Dec
+Pilot and debriefing of questionnaire in target areas | 15-20 Dec
+Start data collection of the household survey. | 21 Dec
+Finish data collection of the household survey. | 13 Jan
+Complete data checks and cleaning. | 20 Jan
+Produce tabulations as per variables agreed by HelpAge and the PI |26 Jan
+Produce technical report as per Output 3 | 31 Jan
+
+Have not heard from GL about sampling frame, so not yet confirmed with MSR what KH said. 
+
+
 
