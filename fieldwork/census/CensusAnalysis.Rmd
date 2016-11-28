@@ -8,7 +8,7 @@ output:
 toc: yes
 ---
 Variable Code | name | notes  |
---------------|------|--------|
+----------------|------------------------------------|-----------------|
 Q1-Ind-ID-X   | ID  |   relevant for matching only |
 Q2-Ind-Name-X | Name| not relevant/accessible |
 Q3-Ind-HHRel-c11| Relationship to head of HH |     |
@@ -32,7 +32,7 @@ Q17-Ind-PrResTown-X  | Township of previous place of residence ||
 Q18-IndPrResRuUr-c2 | Previous place of residence rural or urban ||
 Q19-Ind-Lit-c2  | Can read and write | (age 5 and above) |
 Q20-Ind-EdAtt-c3  | Ever/currently attended school |  (age 5 and above)|
-Q21-Ind-EdHing-c19 | Highest level of education attained | (age 5 and above) grouping? |
+Q21-Ind-EdHigh-c19 | Highest level of education attained | (age 5 and above) grouping? |
 Q22-Ind-ActStat-c12 | Activity Status | (age 10 and above)  |
 Q23-Ind-Occ  | Occupation (ILO)| age 10 and above AND Q22 == employed or self-employed |
 Q24-Ind-Ind | Industry (ILO) | age 10 and above AND Q22 == employed or self-employed |
@@ -44,3 +44,16 @@ Q25-Ind-ChildB | Number of children born alive | (ever married women over 15) |
 
 ## Part I
 
+
+
+<!-- 
+http://siteresources.worldbank.org/INTPAH/Resources/Publications/Quantitative-Techniques/health_eq_tn04.pdf
+
+prequel paper to the 2010 ipums index one
+http://paa2011.princeton.edu/papers/112442
+
+
+Constructing Indices of Rural Living Standards in Northwestern Bangladesh
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2963774/
+
+-->

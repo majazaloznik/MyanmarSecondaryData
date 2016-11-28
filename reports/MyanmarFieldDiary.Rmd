@@ -3,10 +3,13 @@ title: "Myanmar Fieldwork - MZ"
 author: "mz"
 date: "24.11.2016"
 output:
-  word_document: default
-  pdf_document: default
+  word_document:
+    reference_docx: StyleReference.docx
+  pdf_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
   html_document: default
-toc: yes
 word_document html_document: default
 ---
 
@@ -243,5 +246,125 @@ Produce technical report as per Output 3 | 31 Jan
 
 Have not heard from GL about sampling frame, so not yet confirmed with MSR what KH said. 
 
+## Monday 28.11.2016 - census and other updates
 
+### Comments on new version of questionnaire
+
+Recieved new version of questionnaire from Kay - who had a medical emergency, hence the delay. 
+
+Most recent questionnaire file version is `Draft Eng Questionaries V12.docx`.
+
+Returned with comments below:
+
+**Q15e** (Pre-sale of product to relatives or friends or neighbours is more common than traders in rural Myanmar.) *No, that's OK! If you think it's a common option we should definitely keep it!*
+
+**Q40, Q43-46** (prompted responses and ranking) *No, at our meeting, Patrick had the suggestion of changing this to a table. He even wrote the table on his laptop. Can you please check with him?*
+
+
+**Q51** (future plans with land) *Should we not add “don't know”?*
+
+**Q52d** (In Buddhist religion, they usually don’t want in-debt to others when they passed away because they afraid of repaying that debt in other life by poor life.) *No, this is great, we really appreciate you suggesting this sort of local knowledge is very important!*
+
+
+### Meeting at census office
+
+HelpAge was informed - only this morning - that we would in fact be granted access to the census. 
+
+At the census office met with technical director and another official (will confirm position), to explain the purpose of our research, more detail about the analysis, and make assurances about confirming with them what we publish. 
+
+Discussion of techincal side of things leads to setup where I can work on the 1 percent sample on one of their machines usign SPSS, and they can later run the tested code on the 100% one. It may in fact be possible to try doing it with R as well, but for the time being the important thing is a working setup is already feasible. 
+
+Got assigned an office, desktop and support officer, office hours are 9:30-16:30, or 16:00 on Wed and Thu. Office is only 30km from the hotel ;)
+
+### Data Analysis - GL Part 1: Heads of Households
+
+Setup for George's Heads of households analysis:
+
+#### Calculating Derived Variables
+
+##### Ancillary Variables
+
+**HH_ID** - unique household ID as concatenation of 6 levels of geographical  variables
+
+**relationship_generation** - recodes 11 relationship categories into 5 generations - head of hh (and spouse, siblings) being the middle one, then two additional younger ones, and two older ones. Non-relatives and others are not counted, as it would be impossible to tell their generation relative to the head. Used to derive number of generations in HH (unique_generations). 
+
+##### Substantive variables
+
+**unique_generations** counts number of differnt genreations. If a generation is skipped it is not counted. Eg. someone living with their grandchild alone - counts as a two generation household.
+
+**age_head** - age oh head of HH.
+
+**age_head_binned_5**- binned age oh head of HH, 5 year groups: under 15, then 16-20..
+
+**age_head_binned_10** - binned age oh head of HH, 10 year groups: under 20, then 21-30..
+
+**sex_head** sex of head of HH. 
+
+**marital_status_head** marital status of head of HH. 
+
+**number_of_people** - existing variable for household size. 
+
+#### Crosstabulations
+
+First round of crosstabs are the four disability questions and 9 demographic variables - 36 tables delivered to GL as SPSS web output file. This is just provisional, but easy to read output. 
+
+I'll do the other 29 times 9 = 261 tables tomorrow. But please advise on the following (use table for reference):
+
+1. row 7: Duration of residence - this is reported in years, how do you want it split? See Figure 1 for histogram of distribition. 
+
+2. row 7: do you want this for everyone, or only those who's usual residence is "not here"?
+
+3. row 8: do you want this the same as row 5, so you only want here/not here? not actual townships?
+
+4. Please have a look at the attached file `MNMcensus-GL-01.htm` and let me know if this is the output you were expecting for the first four rows, and at the table if the remainbing rows are also correct. 
+
+![Dirty histogram of all (!) durations of residence (not just heads)](figures/fig01.png)
+
+
+
+| |  |sex_ head | age_ head_ binned_ 5/10 | marital_ status_ head | number_ of_ people | unique_ generations | p21_ highest_ grade | p22_ activity_ status | batch_ urban_ rural |
+--|-----------------------------|--------|--------|--------|--------|--------|--------|--------|--------| 
+1|p09a_disability_ seeing |OK |OK |OK |OK |OK |OK |OK |OK |
+2|p09b_disability_ hearing|OK |OK |OK |OK |OK |OK |OK |OK |
+3|p09c_disability_ walking|OK |OK |OK |OK |OK |OK |OK |OK |
+4|p09d_disability_ remembering|OK |OK |OK |OK |OK |OK |OK |OK |
+5|p11_birth_ township_c2 |- |- |- |- |- |- |- |- |
+6|p12_birth_ ur |- |- |- |- |- |- |- |- |
+7|p15_duration_ of_residence|- |- |- |- |- |- |- |- |
+8|p_16_reason_for_ movement |- |- |- |- |- |- |- |- |
+9|p_17_prev_res_ township |- |- |- |- |- |- |- |- |
+10| p18_prev_ res_ur |- |- |- |- |- |- |- |- |
+11| h32_type_ residence         |- |- |- |- |- |- |- |- |
+12| h33_type_ ownership    |- |- |- |- |- |- |- |   - | 
+13 | h34_lighting     |- |- |- |- |- |- |- |- |
+14 |h35a_drinking_ water         |- |- |- |- |- |- |- |- |
+15 | h35b_non_drinking_ water     |- |- |- |- |- |- |- |- |
+16| h36_cooking_ fuel |- |- |- |- |- |- |- |- |
+17| h37_toilet |- |- |- |- |- |- |- |- |- |
+18|h38a_roof |- |- |- |- |- |- |- |- |
+19|h38b_walls |- |- |- |- |- |- |- |- |
+20|h38c_floor |- |- |- |- |- |- |- |- |
+21|h39a_radio |- |- |- |- |- |- |- |- |
+22|h39b_television  |- |- |- |- |- |- |- |- |
+23|h39c_land_ line_phone |- |- |- |- |- |- |- |- |
+24|h39d_mobile_ phone  |- |- |- |- |- |- |- |- |
+25|h39e_computer |- |- |- |- |- |- |- |- |
+26|h39f_internet_ at_home |- |- |- |- |- |- |- |- |
+27|h39g_car_truck_van |- |- |- |- |- |- |- |- |
+28|h39h_motorcycle_ moped |- |- |- |- |- |- |- |- |
+29|h39i_bicycle |- |- |- |- |- |- |- |- |
+30|h39j_4_wheel_tractor |- |- |- |- |- |- |- |- |
+31|h39k_canoe_boat |- |- |- |- |- |- |- |- |
+32|h39l_motor_boat |- |- |- |- |- |- |- |-|
+33|h39m_cart_bullock |- |- |- |- |- |- |- |- | 
+
+### Other communication
+
+#### Sampling frame
+
+Still waiting for confirmation to drop the active farming quota.
+
+#### Migration tables for Knodel et al
+
+I've recieved the tables Knodel et al want from Peter (file `Ideas for Census 2014 tabulation (REVISED).xls`). Should be useful for us, and pretty straightforward. Did not promise anything though.  
 
