@@ -1,15 +1,15 @@
 ---
 title: "Myanmar Fieldwork - MZ"
 author: "mz"
-date: "24.11.2016"
+date: "29.11.2016"
 output:
-  word_document:
-    reference_docx: StyleReference.docx
   pdf_document:
     number_sections: yes
     toc: yes
     toc_depth: 3
   html_document: default
+  word_document:
+    reference_docx: StyleReference.docx
 word_document html_document: default
 ---
 
@@ -126,7 +126,7 @@ To recap the questions are:
 
 ## Saturday 26.11.2016 - updates
 
-Recieved responses from KH and SH on questions from Thu.
+Received responses from KH and SH on questions from Thu.
 
 ### Consolidated comments from KH and SH:
 
@@ -178,7 +178,7 @@ Recieved responses from KH and SH on questions from Thu.
 
 ## Sunday 27.11.2016 - updates
 
-Travelled to Naypyitaw. 
+Traveled to Naypyitaw. 
 
 Received response from Patrick and new version of questionnaire. 
 
@@ -199,7 +199,7 @@ Q15b: No, we wanted family and non-family split up, so:
 
 Q15e: Where did this come from? We did not discuss this option, did we?
 
-Q31: This question doensn't work anymore, how could a respondent answer c (confiscate) as the reason?
+Q31: This question doesn't work anymore, how could a respondent answer c (confiscate) as the reason?
 
 Confiscation has to be added as a new row in the table.
 
@@ -250,7 +250,7 @@ Have not heard from GL about sampling frame, so not yet confirmed with MSR what 
 
 ### Comments on new version of questionnaire
 
-Recieved new version of questionnaire from Kay - who had a medical emergency, hence the delay. 
+Received new version of questionnaire from Kay - who had a medical emergency, hence the delay. 
 
 Most recent questionnaire file version is `Draft Eng Questionaries V12.docx`.
 
@@ -272,7 +272,7 @@ HelpAge was informed - only this morning - that we would in fact be granted acce
 
 At the census office met with technical director and another official (will confirm position), to explain the purpose of our research, more detail about the analysis, and make assurances about confirming with them what we publish. 
 
-Discussion of techincal side of things leads to setup where I can work on the 1 percent sample on one of their machines usign SPSS, and they can later run the tested code on the 100% one. It may in fact be possible to try doing it with R as well, but for the time being the important thing is a working setup is already feasible. 
+Discussion of technical side of things leads to setup where I can work on the 1 percent sample on one of their machines using SPSS, and they can later run the tested code on the 100% one. It may in fact be possible to try doing it with R as well, but for the time being the important thing is a working setup is already feasible. 
 
 Got assigned an office, desktop and support officer, office hours are 9:30-16:30, or 16:00 on Wed and Thu. Office is only 30km from the hotel ;)
 
@@ -290,7 +290,7 @@ Setup for George's Heads of households analysis:
 
 ##### Substantive variables
 
-**unique_generations** counts number of differnt genreations. If a generation is skipped it is not counted. Eg. someone living with their grandchild alone - counts as a two generation household.
+**unique_generations** counts number of different generations. If a generation is skipped it is not counted. Eg. someone living with their grandchild alone - counts as a two generation household.
 
 **age_head** - age oh head of HH.
 
@@ -308,55 +308,29 @@ Setup for George's Heads of households analysis:
 
 First round of crosstabs are the four disability questions and 9 demographic variables - 36 tables delivered to GL as SPSS web output file. This is just provisional, but easy to read output. 
 
-I'll do the other 29 times 9 = 261 tables tomorrow. But please advise on the following (use table for reference):
+I'll do the other 29 times 9 = 261 tables tomorrow. But please advise on the following (use table for reference)(relevant rows have now been moved to Tuesday 28.11.)
 
-1. row 7: Duration of residence - this is reported in years, how do you want it split? See Figure 1 for histogram of distribition. 
+1. row 7: Duration of residence - this is reported in years, how do you want it split? See Figure 1 for histogram of distribution. 
 
 2. row 7: do you want this for everyone, or only those who's usual residence is "not here"?
 
-3. row 8: do you want this the same as row 5, so you only want here/not here? not actual townships?
+3. row 9: do you want this the same as row 5, so you only want here/not here? not actual townships?
 
-4. Please have a look at the attached file `MNMcensus-GL-01.htm` and let me know if this is the output you were expecting for the first four rows, and at the table if the remainbing rows are also correct. 
+4. Please have a look at the attached file `MNMcensus-GL-01.htm` and let me know if this is the output you were expecting for the first four rows, and at the table if the remaining rows are also correct. 
 
 ![Dirty histogram of all (!) durations of residence (not just heads)](figures/fig01.png)
 
 
 
-| |  |sex_ head | age_ head_ binned_ 5/10 | marital_ status_ head | number_ of_ people | unique_ generations | p21_ highest_ grade | p22_ activity_ status | batch_ urban_ rural |
+| |  |sex_ head | age_ head_ binned_ 5/10 | marital_ status_ head | hh_ size_ bounded | unique_ generations | p21_ highest_ grade | p22_ activity_ status | batch_ urban_ rural |
 --|-----------------------------|--------|--------|--------|--------|--------|--------|--------|--------| 
 1|p09a_disability_ seeing |OK |OK |OK |OK |OK |OK |OK |OK |
 2|p09b_disability_ hearing|OK |OK |OK |OK |OK |OK |OK |OK |
 3|p09c_disability_ walking|OK |OK |OK |OK |OK |OK |OK |OK |
 4|p09d_disability_ remembering|OK |OK |OK |OK |OK |OK |OK |OK |
-5|p11_birth_ township_c2 |- |- |- |- |- |- |- |- |
-6|p12_birth_ ur |- |- |- |- |- |- |- |- |
-7|p15_duration_ of_residence|- |- |- |- |- |- |- |- |
-8|p_16_reason_for_ movement |- |- |- |- |- |- |- |- |
-9|p_17_prev_res_ township |- |- |- |- |- |- |- |- |
-10| p18_prev_ res_ur |- |- |- |- |- |- |- |- |
-11| h32_type_ residence         |- |- |- |- |- |- |- |- |
-12| h33_type_ ownership    |- |- |- |- |- |- |- |   - | 
-13 | h34_lighting     |- |- |- |- |- |- |- |- |
-14 |h35a_drinking_ water         |- |- |- |- |- |- |- |- |
-15 | h35b_non_drinking_ water     |- |- |- |- |- |- |- |- |
-16| h36_cooking_ fuel |- |- |- |- |- |- |- |- |
-17| h37_toilet |- |- |- |- |- |- |- |- |- |
-18|h38a_roof |- |- |- |- |- |- |- |- |
-19|h38b_walls |- |- |- |- |- |- |- |- |
-20|h38c_floor |- |- |- |- |- |- |- |- |
-21|h39a_radio |- |- |- |- |- |- |- |- |
-22|h39b_television  |- |- |- |- |- |- |- |- |
-23|h39c_land_ line_phone |- |- |- |- |- |- |- |- |
-24|h39d_mobile_ phone  |- |- |- |- |- |- |- |- |
-25|h39e_computer |- |- |- |- |- |- |- |- |
-26|h39f_internet_ at_home |- |- |- |- |- |- |- |- |
-27|h39g_car_truck_van |- |- |- |- |- |- |- |- |
-28|h39h_motorcycle_ moped |- |- |- |- |- |- |- |- |
-29|h39i_bicycle |- |- |- |- |- |- |- |- |
-30|h39j_4_wheel_tractor |- |- |- |- |- |- |- |- |
-31|h39k_canoe_boat |- |- |- |- |- |- |- |- |
-32|h39l_motor_boat |- |- |- |- |- |- |- |-|
-33|h39m_cart_bullock |- |- |- |- |- |- |- |- | 
+
+
+ *table continued in Tuesday entry*
 
 ### Other communication
 
@@ -366,5 +340,242 @@ Still waiting for confirmation to drop the active farming quota.
 
 #### Migration tables for Knodel et al
 
-I've recieved the tables Knodel et al want from Peter (file `Ideas for Census 2014 tabulation (REVISED).xls`). Should be useful for us, and pretty straightforward. Did not promise anything though.  
+I've received the tables Knodel et al want from Peter (file `Ideas for Census 2014 tabulation (REVISED).xls`). Should be useful for us, and pretty straightforward. Did not promise anything though.  
+
+
+## Tuesday 29.11.2016 - more census
+
+### Comments on new version of questionnaire
+
+Almost done with the back and forth I hope.. Got a pretty close version back from Kay, still issues with the prompting in questions 40, 43-46. She sent over file `Draft Eng Questionaries V13.docx` attached. 
+
+Spelled it out that following our discussion with Patrick the example was: 
+
+>First you prompt one by one: Was the following a reason for the decrease..  
+
+>Decline in soil quality Yes/No
+
+>Decline in seed quality Yes/No
+
+>Not enough rain when needed Yes/No
+
+>Too much rain at the  wrong time Yes/No
+
+> etc
+
+>Then ask:
+
+>Which one was the most important reason?
+
+>Which one was the second most important reason?
+
+
+### Data Analysis - GL Part 1: Heads of Households
+
+Had not received any reply from GL, so proceeded with the following (see table below for reference): 
+
+1. row 7: Duration of residence - this is reported in years, split it into 5 year groups. 
+
+2. row 7: reported only for those who's usual residence is "not here".
+
+3. row 9: (township of previous residence) I collapsed into here/not here, not actual townships.
+
+#### GL Part 1: Calculating Derived Variables
+
+**number_of_people_bound** - realised that there are households in the sample with 93 members.. capped at 15. 
+
+**p05_age_binned_5**- binned age 5 year groups: under 15, then 16-20..
+
+**p05_age_binned_10** - binned age 10 year groups: under 20, then 21-30..
+
+**p11_birth_ township_c2** dichotomous into born here and born away
+
+**p15_duration_of_residence_5** - binned into 5 year groups
+
+**p17_prev_res_township_c2** - dichotomous into "same township" and "other township"
+
+#### GL Part 1: Crosstabulations
+
+
+**Sent GL file `MNMcensus-GL-Part1-1percent.htm` with all 297 crosstabs.**
+
+
+Now completed the remaining 29 sets of crosstabs - see table below. 
+
+All the same as previous four, looking at all heads of household, except:
+
+1. *p15_duration_ of_residence is only crosstabulated for heads of HH where p16_reason_of_movement is not (6== "did not move"). 
+
+2. *p17_prev_res_township and *p18_prev_res_ur are  only crosstabulated for heads of HH where p16_reason_of_movement is not (6== "did not move"). 
+
+Here are the tables listed:
+
+| |  |sex_ head | age_ head_ binned_ 5/10 | marital_ status_ head | number_ of_ people_ bound | unique_ generations | p21_ highest_ grade | p22_ activity_ status | batch_ urban_ rural |
+--|-----------------------------|--------|--------|--------|--------|--------|--------|--------|--------|
+5|p11_birth_ township_c2 | OK |OK |OK |OK |OK |OK |OK |OK |
+6|p12_birth_ ur | OK |OK |OK |OK |OK |OK |OK |OK |
+7*|p15_duration_ of_residence| OK |OK |OK |OK |OK |OK |OK |OK |
+8|p_16_reason_for_ movement | OK |OK |OK |OK |OK |OK |OK |OK |
+9*|p_17_prev_res_ township | OK |OK |OK |OK |OK |OK |OK |OK |
+10*| p18_prev_ res_ur | OK |OK |OK |OK |OK |OK |OK |OK |
+11| h32_type_ residence   |OK |OK |OK |OK |OK |OK |OK |OK |
+12| h33_type_ ownership    OK |OK |OK |OK |OK |OK |OK |OK | OK|
+13 | h34_lighting     |OK |OK |OK |OK |OK |OK |OK |OK |
+14 |h35a_drinking_ water         |OK |OK |OK |OK |OK |OK |OK |OK |
+15 | h35b_non_drinking_ water     |OK |OK |OK |OK |OK |OK |OK |OK |
+16| h36_cooking_ fuel |OK |OK |OK |OK |OK |OK |OK |OK |
+17| h37_toilet |OK |OK |OK |OK |OK |OK |OK |OK |
+18|h38a_roof |OK |OK |OK |OK |OK |OK |OK |OK |
+19|h38b_walls |OK |OK |OK |OK |OK |OK |OK |OK |
+20|h38c_floor |OK |OK |OK |OK |OK |OK |OK |OK |
+21|h39a_radio |OK |OK |OK |OK |OK |OK |OK |OK |
+22|h39b_television  |OK |OK |OK |OK |OK |OK |OK |OK |
+23|h39c_land_ line_phone |OK |OK |OK |OK |OK |OK |OK |OK |
+24|h39d_mobile_ phone  |OK |OK |OK |OK |OK |OK |OK |OK |
+25|h39e_computer |OK |OK |OK |OK |OK |OK |OK |OK |
+26|h39f_internet_ at_home |OK |OK |OK |OK |OK |OK |OK |OK |
+27|h39g_car_truck_van |OK |OK |OK |OK |OK |OK |OK |OK |
+28|h39h_motorcycle_ moped |OK |OK |OK |OK |OK |OK |OK |OK |
+29|h39i_bicycle |OK |OK |OK |OK |OK |OK |OK |OK |
+30|h39j_4_wheel_tractor |OK |OK |OK |OK |OK |OK |OK |OK |
+31|h39k_canoe_boat |OK |OK |OK |OK |OK |OK |OK |OK |
+32|h39l_motor_boat |OK |OK |OK |OK |OK |OK |OK |OK |
+33|h39m_cart_bullock |OK |OK |OK |OK |OK |OK |OK |OK |
+
+
+### Data Analysis - GL Part 2: Women ever married
+
+Asked GL the following questions:
+
+1. 25a is male children and 25b is female children, presumably you want them added, and same for 26-28?
+
+2. Do you want these variables grouped at all (max children born in the sample is 22, do you want them individual rows, or capped at some point, or otherwise grouped)
+
+3. I'm not sure how relevant 26-28 are without the context of 25? By this I mean how useful is it to know the educational distribution oh women who have 2 children still living in the household, or who have had 1 child die, without reference to how many they have given birth to?
+
+Had not received reply, so proceeded with:
+
+1. Adding together all male/female children - but asked Mel if she wanted any son preference work done if I have time at the end. 
+
+2. Capped all numbers of children at 10, so last category is "over 10"
+
+3. Stuck with original instructions and reported raw numbers of children in hh, children elsewhere and children dead. 
+
+#### GL Part 2: Calculating Derived Variables
+
+**p25_children_born** sum of male and female children
+
+**p25_children_born_bound** capped at 10 children, everyone else is "over 10"
+
+**p26_children_in_hh** sum of male and female children
+
+**p26_children_in_hh_bound** capped at 10 children, everyone else is "over 10"
+
+**p27_children_else** sum of male and female children
+
+**p27_children_else_bound** capped at 10 children, everyone else is "over 10"
+
+**p28_children_died** sum of male and female children
+
+**p28_children_died_bound** capped at 10 children, everyone else is "over 10"
+
+
+#### GL Part 2: Crosstabulations
+
+**Sent GL file `MNMcensus-GL-Part2-1percent.htm` with all 32 crosstabs.**
+
+| |  |p04_ sex| age_ binned_ 5/10 | p_06_ marital_ status | number_of_ people_ bound | unique_ generations | p21_ highest_ grade | p22_ activity_ status | batch_ urban_ rural |
+--|-----------------------------|--------|--------|--------|--------|--------|--------|--------|--------|
+1|p25_children_ born_bound | / |OK |X |OK |OK |OK |OK |OK |
+2|p26_children_ in_hh_bound | / |OK |X |OK |OK |OK |OK |OK |
+3|p27_children_ else_bound | / |OK |X |OK |OK |OK |OK |OK |
+4|p28_children_ died_bound | / |OK |X |OK |OK |OK |OK |OK |
+
+#### GL Part 2: Issues
+
+1. I'm assuming you didn't really want the sex variable here? (current version has sex of head of household, will remove).
+
+2. Current version accidentally has marital status of head of household instead of the woman, will correct. 
+
+
+### Data Analysis - GL Part 3: over 18 and disabilities
+
+Instructions read "disability variable: Q9 with 1, 2, 3, or all 4 disabilities (i.e. level of disability)". 
+
+I constructed three types of disability "index" - the third one is following the instructions:
+
+
+1. Simple sum of levels for each disability (0, 1, 2, 3): so maximum is 12.
+
+2. Scaled sum of levels for each disability (0, 0.5, 1, 2): so maximum is 8, but difference between little difficulty and a lot of difficulty is half of the difference between a lot of difficulty and complete disability. 
+
+3. Dummy sum ignores levels, just yes/no, so maximum is 4, regardless of level. 
+
+#### GL Part 3: Calculating Derived Variables
+
+
+**p09_disablity_sum** = sum(p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering) -4
+
+**p09_disablity_rescaled_sum** sum of all four with levels rescaled to [0, 0.5, 1, 2]
+
+**p09_disablity_dummy_sum** sum of all four dummy variables for each disability. 
+
+
+#### GL Part 3: Crosstabulations - limited to those aged 18 or over:
+
+
+**Sent GL file `MNMcensus-GL-Part3-1percent.htm` with all 30 crosstabs.**
+
+
+|||p04_ sex |p05_ age_ binned_ 5 |p05_ age_ binned_ 10| p21_ highest_ grade| p22_ activity_ status |batch_ urban_ rural |p26_ children_ in_hh_ bound| p27_ children_ else_ bound|h32_ type_ residence | h33_ type_ ownership|
+--|---------------------------|--------|--------|--------|--------|--------|--------|--------|--------|------|------|
+1|p09_disablity_ sum | OK |OK |OK |OK |OK |OK |OK |OK | OK | OK |
+2| p09_disablity_ rescaled_sum | OK |OK |OK |OK |OK |OK |OK |OK | OK | OK |
+3| p09_disablity_ dummy_sum |  OK |OK |OK |OK |OK |OK |OK |OK | OK | OK |
+
+
+#### GL Part 3:  Issues
+
+Accidentally left in household size and number of generations, will remove. 
+ 
+### GL SUMMARY:
+
+Sent GL three separate files of crosstabs for each of the three parts:
+
+1. `MNMcensus-GL-Part1-1percent.htm` with 297 xtabs.
+
+* age grouped into 5 and 10 year bins
+* household size bounded at 15
+* number of generations doesn't count skipped generations (grandpa and grand kid is two generation hh)
+* education has 20 categories, you sure you want all of them?
+* duration of residence only for people that have moved, and then in 5 year groups
+* types of disability is 4 different questions. why not index like in Part 3?
+* duration of stay is grouped in 5 years and only reported for those who have moved
+* previous usual residence only reported for those who have moved. 
+* housing characteristics is 23 variables. times 9. that is a lot of crosstabs, what are you planning on doing whit them?
+
+* "members living abroad Q40 (number of each relation, age, gender, country of residence.) !?! so for example there are 11 types of relations, for each one you want the number abroad in a household by the 8 variables? etc? And the ages, even if they are grouped, this is an exploding table? Anyway, the sample I have only has "number of members abroad" (see fig 2 for distribution), I'll have to ask for the international migration data separately, but not until I know what to do with it?
+
+![Fig2: Dirty histogram of all numbers of household members aborad](figures/fig02.png)
+
+2. `MNMcensus-GL-Part2-1percent.htm` with 32 xtabs.
+
+* age grouped into 5 and 10 year bins
+* presumably not interested in their gender?
+* household size bounded at 15
+* number of generations doesn't count skipped generations (grandpa and grand kid is two generation hh)
+* education has 20 categories, you sure you want all of them?
+* male and female children together, right?
+* numbers of children capped at 10, OK?
+* are you sure number of children in HH, elsewhere and died are useful on their own?
+
+
+3. `MNMcensus-GL-Part3-1percent.htm` with 30 xtabs.
+
+* constructed three different disability indices, but all are very ad-hoc. the third one (p09_disablity_ dummy_sum) is the straight reading of your instructions. are you happy with that, or do you want sth else?
+
+### Dinner with Peter
+
+He asked a lot of questions about the project: how it compares with Vietnam, who is in charge, how is it organized, how are we structuring the analysis, what we are expecting to find. I deflected all of these as out of my purview. 
+
 
