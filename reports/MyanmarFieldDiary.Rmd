@@ -579,3 +579,338 @@ Sent GL three separate files of crosstabs for each of the three parts:
 He asked a lot of questions about the project: how it compares with Vietnam, who is in charge, how is it organized, how are we structuring the analysis, what we are expecting to find. I deflected all of these as out of my purview. 
 
 
+
+## Wednesday 30.11.2016 - more census
+ 
+### Comments on new version of questionnaire
+
+Kay sent more recent version, with suggestions from Patrick. The Q40-46 are finally OK as discussed, and minor misunderstanding about Q51 - we all agree "don't know" should be an option, but she keeps inserting it as a question(row) instead of an answer(column). 
+
+This version wass file `Draft Eng Questionaries V14.docx`. Replied with corrections, hopefully this can now go to translation. 
+
+Got back `Draft Eng Questionaries V15.docx`. which I confirmed to be OK. 
+
+Then it went to Patrick apparently and I got `Draft Eng Questionaries V16.docx` which has additional corrections by Patrick. Most of them are fine (explicitly stating which parts are read out, which parts not), but he added a misunderstanding about leasing and renting land. 
+
+I said @18:02:
+
+> That all looks good, thanks Patrick, except for the addded option at Q20 (cultivating leased land): No, this is not an option: To be clear, Q20 and Q22 mean the opposite: Q20 is your own land that you are leasing out (so you cannot be cultivating it, someone else is) and Q22 is you are renting someone else's land (so we ask how much of it you are cultivating). 
+
+Patrick responded @18:17 local time: 
+
+> I see, I understand. 
+Ok, so we have a questionnaire now.
+Do you agree with the timeline? It is the best our team can do at that time.
+
+My email @18:22 local time read:
+
+> Great, yes indeed it sounds like we have a questionnaire!
+I have reported the timeline back, and well, there isn't much that can be done, so we're good. 
+Could you please let me know when to expect the back translation?
+And could I please have a clean version of this final questionnaire for reference. 
+Thanks!
+
+### Data Analysis - GL Part 1: Heads of Households
+
+Responses to outstanding issues from GL @00:00 and @00:23 @16:06:
+
+* five year intervals for age groups @00:00
+* duration of residence for everyone (not just people that have moved) @00:00
+* township of previous residence collapsed to here/not here @00:00
+* "Disability – understood" @16:06, I'll take that as adding indexes as well..
+* Education "Education has 10 categories (don’t need 1-11 separately) but we can also group 15,16,17 and 18 as postgraduate" @16:06. 
+
+My response @19:37:
+
+> So could I suggest instead education 1-5 as elementary, 6-9 as middle and 10-11 as high school.
+The higher education distribution is really odd:
+college 12, vocational training 13, undergraduate 14 add up to about 11,000 in the sample, and graduate 15, postrgraduate 16, masters 17, phd 18 add up to about 23,000. 
+The largest group here is graduate (15), i think because 14 is "undergraduate diploma". So i would suggest 12-15, and 16-18 as a more meaningful distinction, but i can also ask them tomorrow. 
+
+#### GL Part 1: Crosstabulations
+
+Taking this *final* set of communication with GL I am adding the disability indices and collapsing the educaiton varz and cold writing the SPSS code now to test the last time tomorrow and then run it live on the whole dataset. 
+
+This script is  in the file `mz05.sav`. I will set it to automatically export to `.xlsx`, but also probably `.sav` and `.htm`. 
+
+### Data Analysis - GL Part 2: Women ever married - SH update
+
+Split the data back into male and female children, but capped 
+
+#### GL Part 2: Calculating Derived Variables - SH update
+
+**p25_children_born_male_bound** capped at 10 boys, everyone else is "over 10"
+
+**p25_children_born_female_bound** capped at 10 girls, everyone else is "over 10"
+
+**p26_children_in_hh_male_bound** capped at 10 boys, everyone else is "over 10"
+
+**p26_children_in_hh_female_bound** capped at 10 girls, everyone else is "over 10"
+
+**p27_children_else_male_bound**  capped at 10 boys, everyone else is "over 10"
+
+**p27_children_else_female_bound** capped at 10 girls, everyone else is "over 10"
+
+**p28_children_died_male_bound** capped at 10 boys, everyone else is "over 10"
+
+**p28_children_died_female_bound** capped at 10 girls, everyone else is "over 10"
+
+
+#### GL Part 2: Crosstabulations - SH update
+
+| |  | age_ binned_ 5| p_06_ marital_ status | number_of_ people_ bound | unique_ generations | p21_ highest_ grade | p22_ activity_ status | batch_ urban_ rural |
+--|-----------------------------|--------|--------|--------|--------|--------|--------|--------|
+1|p25_children_born_ male_bound  |OK |OK |OK |OK |OK |OK |OK |
+2|p25_children_born_ female_bound |OK |OK  |OK |OK |OK |OK |OK |
+3|p26_children_in_hh_ male_bound  |OK |OK |OK |OK |OK |OK |OK |
+4|p26_children_in_hh_ female_bound  |OK |OK  |OK |OK |OK |OK |OK |
+5|p27_children_else_ male_bound  |OK |OK |OK |OK |OK |OK |OK |
+6|p27_children_else_ female_bound |OK |OK  |OK |OK |OK |OK |OK |
+7|p28_children_died_ male_bound  |OK |OK |OK |OK |OK |OK |OK |
+8|p28_children_died_ female_bound  |OK |OK  |OK |OK |OK |OK |OK |
+
+These have now been completed and sent to GL and SH (in `.htm` @00:06, `.xls` @11:57 @and `.doc` @12:08 format). 
+
+No comments recieved, I will nevertheless add back the children of both genders variables, and take full responsibility for that. I will go ahead now and cold write the SPSS code now to test the last time tomorrow and then run it live on the whole dataset. 
+
+This script is  in the file `mz05.sav`. I will set it to automatically export to `.xlsx`, but also probably `.sav` and `.htm`. 
+
+### Data Analysis - GL Part 3: over 18s and disability
+
+These have now been completed and sent to GL (in `.htm` @00:06). 
+No comments recieved, assuming it is fine (i.e. OK to keep all three indices, even though GL only wanted the one). This is finished and ready to test the last time tomorrow and then run it live on the whole dataset. 
+
+This script is  in the file `mz05.sav`. I will set it to automatically export to `.xlsx`, but also probably `.sav` and `.htm`. 
+
+
+### Data Analysis - GL Part Internaitonal Migration
+
+This is in response to instructions that read:
+
+*"Members living abroad Q40 (number of each relation, age, gender, country of residence)"* 
+
+(To be fair, I completely missed this line all of Tuesday!)
+
+To which I responded by @01:20:
+
+> I'm sorry, I'm not sure I understand your migration instructions at all. Maybe it's because the migration table is a subtable, so I'm not sure how that summarises per HoH. Can you please specify them the same way you did the others? Also, as I said, I have not seen the data itself, will need to ask tomorrow. 
+
+
+@16:06 GL:
+
+> I am getting confused about the migration issue myself I assume we are talking about Q40 although we are also interested in internal migration (27 and 17/18) where we are interested in as many characteristics about these migrants as possible. Does that make sense?
+
+@19:37 I responded with:
+
+> So the international migration is a subtable for each household. With as many rows as there were out-migrants. So the question is, what is our unit of analysis, 
+> 1. the migrants themselves, or
+> 2. the household they left 
+
+> if. 1. then we can look at individual migrant-level variables. eg. age of migrants X household size (the one they left).  but then if a HH  lost 3 children, the HH will be counted 3 times, once for each migrant. 
+
+> if 2. then we want to summarise the migrants as a HH-level variable. So number of migrants left is one such variable, but gender of migrants left or relationship is not, because one house could have lost a son+grandson, another all three siblings.. unless you have a way of summarising. e.g. number of children left. Does that make sense? 
+
+> With internal migration the problem is the opposite. Either we are interested in:
+> 1. the migrants themselves, or
+> 2. the households they are now members of. 
+> i.e. we don't know anything about the hh they left, all we know is the township, and whether or not it was urban or rural. See attached table of what Knodel et al want - I havent' had a chance to get around to it just yet though.. 
+
+
+#### GL Part: International Migration: status
+
+I now have the 1 percent sample. If I get around to it it will probably be for Knodel, unless I get any clearer instructions before had. His table is really good, I don't see why we couldn't do something similar? I can send it again? 
+
+### Data Analysis - SH - additional requests
+
+*These remained unclarified and therefore unfulfilled*
+
+From SH Instructions @11:21:
+ 
+> I am interested in gender/age, disability (or chronic disease), children by gender in household
+Employment or occupation by age/gender
+
+and @11:26:
+ > And children by number by age by occupation, by education, by urban rural
+for a second analysis. 
+Also in disability one - add in marital status of householder alongside gender of resident child/children
+
+My reply @13:34:
+
+> Sarah, I'm really sorry, I'm not clear on your requests, I've tried confirming what I understand point by point below, but it would be much easier if you could state which variables you want crosstabulated (using X to sigbify that) and the population this applies to, so to give an example: 
+gender X disability level (for HoH living in three or more generation households)
+
+> or
+
+> gender X age X disability walking (for all over 18)
+
+> if that makes sense? Because when you say "children by number by age by occupation, by education, by urban rural" I read that as a crosstabulation of 6 variables that will produce a table with over 2 million cells. And I don't know for which population, is it for heads of household, for over 18s etc..
+
+
+> But here are my comments on what you asked:
+
+> SH> I am interested in gender/age, disability (or chronic disease), children by gender in household @11:21
+
+> 1. Gender X disability - already have:
+
+> -> already in GL-P1 (individual disabilities for HoH) and 
+
+> ->  GL-P3 (level of disability for over 18)
+
+> 2. age X disability - already have:
+
+> -> already in GL-P1 (individual disabilities for HoH) and 
+
+> ->  GL-P3 (level of disability for over 18)
+> 3. gender X age X disability - we don't have. do you want for each disability individually (seeing, hearing, walking, remembering as in GL-P1) or all together (level of disability) as in GL-P3.  For which population (all, HoH, over 18..)?
+
+> 4. OK, you just want the distribution of number of children by gender in HH?
+
+> SH> Employment or occupation by age/gender  @11:21
+
+> 5. All of these tables are already published e.g. here,  http://myanmar.unfpa.org/sites/asiapacific/files/pub-pdf/2B_Occupation_and_Industry_EN.pdf or http://myanmar.unfpa.org/sites/asiapacific/files/Union_2B_Tables-EN.xlsx for excel tables. 
+
+> [for future reference, they  use the ISCO occupational codes - there are three levels, see attached, but there are 140 of them]
+
+> SH> And children by number by age by occupation, by education, by urban rural for a second analysis @11:26
+
+> 6. Number of children X age - already had, but you said you wanted by males and females separately:
+
+> -> in GL-P2 male children X age and female children X age (for women over 15). Do you want both genders together?
+
+> 7. Number of children X occupation. Occupation has 140 categories, is that what you mean, or collapsed? And does this mean you want male and female children together or not? 
+
+> -> already have in GL-P2 male children X economic activity and female children X economic activity (for women over 15)
+
+> 8.  Number of children X education - already had, but you said you wanted by males and females separately:
+
+>  -> in GL-P2 male children X education and female children X education (for women over 15).Do you want both genders together?
+
+> 9.  Number of children X Urban/Rural - already had, but you said you wanted by males and females separately:
+
+>  -> in GL-P2 male children X Urban/Rural and female children X Urban/Rural (for women over 15).Do you want both genders together?
+ 
+> SH> Also in disability one - add in marital status of householder alongside gender of resident child/children @11:26
+
+> 10. I'm completely lost now. I'll guess you want:
+ 
+> marital status of HoH  X  gender of resident children [HoH with at least one disability ]
+
+
+Received response @14:26
+
+> Er no!
+I want you to select by these variables
+Let's wait until I can access the data 
+
+Which I do not uderstand, so wait. 
+
+### Data Analysis - SH- new
+
+Instruction @20:03 local time: 
+
+> Over 65 by household residence of sons and household residence of daughters - by one disability score - our have to group this
+
+My reading: 
+
+**p09_disablity_D_sum** [HoH over 65 with at least one son co-residing]
+
+**p09_disablity_D_sum** [HoH over 65 with at least one daughter co-residing]
+
+Sarah confirms @ 20:21. 
+
+This is running on the 1 percent sample using `R` on my laptop. I added two other groups, those with no children coresiding, and those with at least one of each gender. Results below, communicated to Sarah @21:56 local time. 
+
+Out of 16339 household with heads over 65 (in the 1 percent sample), we have the following percentages for each number of disabilities:
+
+| | Heads of HH over 65 with at least one daughter coresident |Heads of HH over 65 with at least one son coresident |Heads of HH over 65 with at least one daughter and one son coresident |Heads of HH over 65 with no children coresindet |
+------------------|-----------------|------------------|-----------------|---------------|
+No Disabilities | 73.92 |75.27 |76.46 |67.87|
+One disability | 13.41 |12.71 |12.28 |15.86|
+Two disabilities |  6.47  |5.88 | 5.59  |7.27|
+Three disabilities |  2.74  |2.78 | 2.59 | 3.90|
+Four disabilities |  3.46  |3.37 | 3.08 | 5.10|
+(total N of HH) | 8688 | 6594 | 3509 | 4566| 
+
+#### Data Analysis: ready for FULL - SH- new 
+
+This is the test run I did with R on my laptop. Will try tomorrow to run it on the full dataset, to try out how the whole R thing works.. File `SH01.csv`. 
+
+### Data Analysis - KH: older famers. 
+
+Finally it was Ken's turn. Here were my questions and comments based on a quick run on the 1 percent sample (@16:02): 
+
+> Farming households, here are five options for defining them using the ISCO classification of occupations (attached, but quickly: 611-634 is skilled agricultural, 921 is agricultural labourers).
+
+> Households where:  
+
+> 1. Head of household is 611-634 or 921  [47762/108780] - 44 %
+> 2. Head of household is 611-634 only [40542] - 37 %
+> 3. Head of household OR spouse is 611-634 or 921 [49301] - 45 %
+> 4. Head of household OR spouse is 611-634 only [41846] - 38 %
+> 5. Anyone in core household (spouse, child/inlaw, sibling, parent, grandchild/parent) is 611-634 only [47666] 43 %
+
+> **Disability status**: How do you want to define that? remember, there are 4 disabilities, and three levels of having them each.
+
+> Right now I understand that you want:
+
+> **age distribution** [of heads of farming HH where head is over 60]
+> **age distribution** [of heads of farming farming HH where head is under 60 and parents coreside]
+
+> **gender distribution** [of heads of farming HH where head is over 60]
+> **gender distribution** [of heads of farming HH where head is under 60 and parents coreside]
+
+> **disability status distribution**(? 1-12, 1-8, 1-4?) [of heads of farming HH where head is over 60]
+> **disability status distribution**(? 1-12, 1-8, 1-4?)[of heads of farming HH where head is under 60 and parents coreside]
+
+> These are not crosstabulations, just single variable distributions. You want instead 
+
+> **age** x **gender** [of heads of farming HH where head is over 60]
+
+> etc. you have to specify, because when you write age/gender/disability status that's a 480 cell table that you probably don't want?  
+
+> Other people who contribute labour to farm:
+
+> Do we select these by activity status? Who counts,
+> 1 sought work? 
+> 2 didn't seek work? 
+> 3 contributing family worker? 
+> 4 household worker? 
+. Some combination, all of them? 
+
+> Then we have number of available agri labour in hh. What are you interested in, jsut the distribution [in the same two household types as before]?
+
+> But age of available agri labour in hh is not a household variable. One hh will have [23, 55, 44] What do you want to do with that. Average age of available agri labour?
+
+> And same for gender of available agri labour in hh? How do you summarise that at HH level?
+
+> Hire/not Hire - NO WAY can this be done. 
+
+> Income measured from assets: There are soo many ways of doing this [there are 13 assets listed, plus housing characteristics..] any more specific ideas are very welcome. 
+
+> Overall: you want to compare the two groups of farming HH mentioned above, there are other farming HH not covered by these [which ones depend on the definition of farming HH]. Do you not want the distributions for those as well?
+
+### Data Analysis - SUMMARY
+
+1. GL parts 1, 2 and 3 are ready to go. I will send the 1 percent outputs again now in `.htm` and `.xlsx` format. The only thing that will change tomorrow is: 
+
+* education variable collapsed
+* disability indices added to Part 1
+* both children added to Part 2. 
+
+2. These three sets will be run from SPSS Syntax code, and outputs saved as `.htm` and `.xlsx` format, possibly also .sav if I figure out the *OMS* (output managment system).
+
+3. SH the disability by coresiding children is also ready to go. Are you happy with it? It was written in R, and I will hopefully be able to run it tomorrow as well. The other questions - please, you need to be more specific. This is an insanely big dataset, and the options are endless. I'm trying to elaborate on what I'm doing, but maybe sometimes I take things for granted and skim over them, so please ask if I'm not clear in what I want. 
+
+4. OK, but tomorrow morning I will ask for a trial of these on the full sample, and this will hopefully mean that I get to test out both the SPSS and R workflow and they will hopefully both work. This is important because I'm a lot faster in R, and if this works could continue with Kens's stuff in R as well. Otherwise will have to stick to SPSS syntax. 
+
+5. No promises, but the staff at the office are really lovely and I think it might be possible to get them to agree to run my code even after I'm gone? That would be brilliant, because there would be a lot more I'd like to do, but first things first. But I will def buy them some nice parting gifts.. 
+
+6. International migration: this involves matching tables, which is easier in R. I'll do Ken's stuff first, before getting to that. It is also what Knodel wants, so hopefully we can combine the two. 
+
+7. Ken needs to reply to my questions. Otherwise I might make some executive decisions that are not to everyone's taste. But I can try covering as many bases as possible until then. 
+
+8. I've got only two more days in the office - but realistically that means that only what get's communicated between us by Thursday evening in the UK will affect what I get out...
+
+9. Questionnaire is settled. Waiting for clean version and double translation date tomorrow. 
+
+
