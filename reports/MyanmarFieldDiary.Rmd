@@ -896,6 +896,8 @@ Finally it was Ken's turn. Here were my questions and comments based on a quick 
 * education variable collapsed
 * disability indices added to Part 1
 * both children added to Part 2. 
+* also children by gended added to Part 3. 
+
 
 2. These three sets will be run from SPSS Syntax code, and outputs saved as `.htm` and `.xlsx` format, possibly also .sav if I figure out the *OMS* (output managment system).
 
