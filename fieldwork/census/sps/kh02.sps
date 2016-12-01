@@ -71,6 +71,7 @@ EXECUTE.
 * disability indexes
 
 compute p09_disablity_sum = sum(p09a_disability_seeing, p09b_disability_hearing, p09c_disability_walking, p09d_disability_remembering) -4.
+VARIABLE LABELS p09_disablity_sum 'Disabilites regular sum (12)'.
 
 ************************************************************************************
 * rescale and then sum up
@@ -83,6 +84,8 @@ compute p09_disablity_rescaled_sum = sum(p09a_disability_seeing_rescaled,  p09b_
  p09c_disability_walking_rescaled, p09d_disability_remembering_rescaled) .
 exe.
 delete variables p09a_disability_seeing_rescaled  p09b_disability_hearing_rescaled  p09c_disability_walking_rescaled p09d_disability_remembering_rescaled.
+
+VARIABLE LABELS p09_disablity_rescaled_sum 'Disabilites rescaled sum (8)'.
 
 ************************************************************************************
 * dummy and sum up 
@@ -97,6 +100,7 @@ exe.
 delete variables p09a_disability_seeing_dummy p09b_disability_hearing_dummy p09c_disability_walking_dummy p09d_disability_remembering_dummy.
 exe.
 
+VARIABLE LABELS p09_disablity_dummy_sum 'Disabilites dummy sum (4)'.
 
 ************************************************************************************
 * Types of farming households: FOUR KINDS
@@ -166,6 +170,8 @@ aggregate outfile * mode = ADDVARIABLES
 /Parents_coresHH = max(HH_parents_cores)
 
 
+
+
 ************************************************************************************
 ************************************************************************************
 * COmpute HH_type - four different ways
@@ -180,6 +186,7 @@ IF  (FarmingHH_F_HoH = 1 & Over60_HoH = 1 ) HH_Type_HoH =1.
 IF  (FarmingHH_F_HoH = 1 & Over60_HoH = 0 & Parents_coresHH = 1) HH_Type_HoH =2.
 IF  (FarmingHH_F_HoH = 1 & Over60_HoH = 0 & Parents_coresHH = 0) HH_Type_HoH =3.
 VALUE LABELS HH_Type_HoH 0 'not farming' 1 'HoH over 60' 2 'HoH under 60 AND parents cores' 3 'HoH under 60 and parents not cores'.
+VARIABLE LABELS HH_Type_HoH 'Type of Farming HH (HoH is 6xx)'
 EXECUTE.
 
 ************************************************************************************
@@ -190,6 +197,7 @@ IF  (FarmingHH_HoH_Sp = 1 & Over60_HoH = 1 ) HH_Type_HoH_Sp=1.
 IF  (FarmingHH_HoH_Sp = 1 & Over60_HoH = 0 & Parents_coresHH = 1) HH_Type_HoH_Sp=2.
 IF  (FarmingHH_HoH_Sp = 1 & Over60_HoH = 0 & Parents_coresHH = 0) HH_Type_HoH_Sp=3.
 VALUE LABELS HH_Type_HoH_Sp 0 'not farming' 1 'HoH over 60' 2 'HoH under 60 AND parents cores' 3 'HoH under 60 and parents not cores'.
+VARIABLE LABELS HH_Type_HoH_Sp 'Type of Farming HH (HoH or Spouse is 6xx)'
 EXECUTE.
 
 ************************************************************************************
@@ -200,43 +208,99 @@ IF  (FarmingHH_F_Any = 1 & Over60_HoH = 1 ) HH_Type_Any=1.
 IF  (FarmingHH_F_Any = 1 & Over60_HoH = 0 & Parents_coresHH = 1) HH_Type_Any=2.
 IF  (FarmingHH_F_Any = 1 & Over60_HoH = 0 & Parents_coresHH = 0) HH_Type_Any=3.
 VALUE LABELS HH_Type_Any 'not farming' 1 'HoH over 60' 2 'HoH under 60 AND parents cores' 3 'HoH under 60 and parents not cores'.
+VARIABLE LABELS HH_Type_Any 'Type of Farming HH (Any relative is 6xx)'
 EXECUTE.
 
 ************************************************************************************
-* where farming means 
+* where farming means FarmingHH_F_Any_contr
+
+IF  (FarmingHH_F_Any_contr = 0 ) HH_Type_Any_contr =0. 
+IF  (FarmingHH_F_Any_contr = 1 & Over60_HoH = 1 ) HH_Type_Any_contr =1.
+IF  (FarmingHH_F_Any_contr = 1 & Over60_HoH = 0 & Parents_coresHH = 1) HH_Type_Any_contr =2.
+IF  (FarmingHH_F_Any_contr = 1 & Over60_HoH = 0 & Parents_coresHH = 0) HH_Type_Any_contr =3.
+VALUE LABELS HH_Type_Any_contr 'not farming' 1 'HoH over 60' 2 'HoH under 60 AND parents cores' 3 'HoH under 60 and parents not cores'.
+VARIABLE LABELS HH_Type_Any_contr 'Type of Farming HH (Any relative is 6xx/921 AND contributing)'
+EXECUTE.
+
 
 ************************************************************************************
+* AVAILABILITY OF HHLABOUR - MALE
 ************************************************************************************
-* CROSSTABS FOR KEN - PART ONE
-* select only Heads of households:
+* HH member, not Head, activity status = contributing or any farming occupation
 
-DATASET ACTIVATE MainFile.
+COMPUTE Avail_Labour_M = 0
+IF  (p04_sex = 1 AND p03_relationship NOT 1 & (p22_activity_status = 5 or ((600 <= p23_occupation and p23_occupation  <700 ) or p23_occupation =921)) Avail_Labour_M = 1. 
+exe.
+
+aggregate outfile * mode = ADDVARIABLES
+/break HH_ID
+/HH_N_Avail_Labour_M = sum(Avail_Labour_M).
+
+VARIABLE LABELS HH_N_Avail_Labour_M  'Number of available MALE agri labourers in HH'.
+
+
+************************************************************************************
+* AVAILABILITY OF HHLABOUR - FEMALE
+************************************************************************************
+* HH member, not Head, activity status = contributing or any farming occupation
+
+COMPUTE Avail_Labour_F = 0
+IF  (p04_sex = 2 AND p03_relationship NOT 1 & (p22_activity_status = 5 or ((600 <= p23_occupation and p23_occupation  <700 ) or p23_occupation =921)) Avail_Labour_F = 1. 
+exe.
+
+aggregate outfile * mode = ADDVARIABLES
+/break HH_ID
+/HH_N_Avail_Labour_F = sum(Avail_Labour_F).
+
+VARIABLE LABELS HH_N_Avail_Labour_F 'Number of available FEMALE agri labourers in HH'.
+
+************************************************************************************
+* AVAILABILITY OF HHLABOUR
+************************************************************************************
+
+COMPUTE HH_N_Avail_Labour = HH_N_Avail_Labour_M + HH_N_Avail_Labour_F.
+EXE.
+
+VARIABLE LABELS HH_N_Avail_Labour 'Total Number of available agri labourers in HH'.
+
+
+
+
+
+
+************************************************************************************
+* NO CAR, MOTORCYCLE OR TRACTOR IN HH
+************************************************************************************
+* 
+
+COMPUTE No_Vehicle = 0.
+IF  (p39g_car_truck_van + p39h_motorcycle_moped + p39h_j_4_wheel_tractor = 0) No_Vehice = 1. 
+exe.
+
+aggregate outfile * mode = ADDVARIABLES
+/break HH_ID
+/HH_No_Vehicle = max(No_Vehicle).
+VALUE LABELS HH_No_Vehicle 0 'at least one motor vehicle' 1 'No motor vehicles'. 
+VARIABLE LABELS HH_No_Vehicle  'No motor vehicle in HH'.
+exe. 
+
+************************************************************************************
+* select only Heads of households - i.e. one row per HH
 USE ALL.
-COMPUTE filter_$=(p03_relationship = 1 ).
-VARIABLE LABELS filter_$ 'Head of household'.
-VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
-FORMATS filter_$ (f1.0).
-FILTER BY filter_$.
-EXECUTE.
+SELECT IF (p03_relationship = 1).
+exe.
 
-CROSSTABS
-  /TABLES=p05_age_binned BY p04_sex BY HH_Type_Any_relative
-  /FORMAT=AVALUE TABLES
-  /CELLS=COUNT
-  /COUNT ROUND CELL.
 
-CROSSTABS
-  /TABLES= p09_disablity_sum BY p05_age_binned BY p04_sex BY HH_Type
-  /FORMAT=AVALUE TABLES
-  /CELLS=COUNT
-  /COUNT ROUND CELL.
 
-FILTER OFF.
+************************************************************************************
+************************************************************************************
+* CROSSTABS FOR KEN - PART ONE: Age by Gender by disability by HH type by region?
+************************************************************************************
+************************************************************************************
 
 
 ************************************************************************************
 ** OUTPUT MANAGMENT 
-************************************************************************************
 
 OMS
   /SELECT TABLES
@@ -252,15 +316,41 @@ OMS
    OUTFILE='C:\Users\Dell\Documents\IBM\SPSS\Statistics\census\output\KH01.xlsx' VIEWER=YES
   /TAG='KH01.XLSX'.
 
+************************************************************************************
+* HoH Farming HH
 
-DATASET ACTIVATE MainFile.
 CROSSTABS
-  /TABLES=p05_age_binned BY p04_sex
+  /TABLES= batch_state_region BY HH_Type_HoH BY p09_p09_disablity_dummy_sum BY p05_age_binned BY p04_sex 
   /FORMAT=AVALUE TABLES
   /CELLS=COUNT
   /COUNT ROUND CELL.
 
+************************************************************************************
+* HoH or spouse Farming HH
 
+CROSSTABS
+  /TABLES= batch_state_region BY HH_Type_HoH_Sp BY p09_p09_disablity_dummy_sum BY p05_age_binned BY p04_sex 
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+
+************************************************************************************
+* Any relative Farming HH
+
+CROSSTABS
+  /TABLES= batch_state_region BY HH_Type_Any BY p09_p09_disablity_dummy_sum BY p05_age_binned BY p04_sex 
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+
+************************************************************************************
+* Any relative contributing Farming HH
+
+CROSSTABS
+  /TABLES= batch_state_region BY HH_Type_Any_contr BY p09_p09_disablity_dummy_sum BY p05_age_binned BY p04_sex 
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
 
 
 ************************************************************************************
@@ -270,6 +360,153 @@ CROSSTABS
 * OMSEND.
 OMSEND TAG=['KH01.SAV'].
 OMSEND TAG=['KH01.XLSX'].
+
+
+
+
+
+************************************************************************************
+************************************************************************************
+* CROSSTABS FOR KEN - PART Two: distribution of M/F/Total number of available
+* labour in HH for different HH type and region, male and female HoH
+************************************************************************************
+************************************************************************************
+
+
+************************************************************************************
+** OUTPUT MANAGMENT 
+
+OMS
+  /SELECT TABLES
+  /IF COMMANDS=['Crosstabs'] SUBTYPES=['Crosstabulation']
+  /DESTINATION FORMAT=SAV NUMBERED=TableNumber_
+   OUTFILE='C:\Users\Dell\Documents\IBM\SPSS\Statistics\census\output\KH02.sav' VIEWER=YES
+  /TAG='KH02.SAV'.
+
+OMS
+  /SELECT TABLES
+  /IF COMMANDS=['Crosstabs'] SUBTYPES=['Crosstabulation']
+  /DESTINATION FORMAT=XLSX
+   OUTFILE='C:\Users\Dell\Documents\IBM\SPSS\Statistics\census\output\KH02.xlsx' VIEWER=YES
+  /TAG='KH02.XLSX'.
+
+************************************************************************************
+* HoH Farming HH
+
+CROSSTABS
+  /TABLES= batch_state_region BY HH_Type_HoH BY p04_sex BY HH_N_Avail_Labour HH_N_Avail_Labour_M HH_N_Avail_Labour_F
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+
+************************************************************************************
+* HoH or spouse Farming HH
+
+CROSSTABS
+  /TABLES= batch_state_region BY HH_Type_HoH_Sp BY p04_sex BY HH_N_Avail_Labour HH_N_Avail_Labour_M HH_N_Avail_Labour_F
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+
+************************************************************************************
+* Any relative Farming HH
+
+CROSSTABS
+  /TABLES= batch_state_region BY HH_Type_Any BY p04_sex BY HH_N_Avail_Labour HH_N_Avail_Labour_M HH_N_Avail_Labour_F
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+
+************************************************************************************
+* Any relative contributing Farming HH
+
+CROSSTABS
+  /TABLES= batch_state_region BY HH_Type_Any_contr BY p04_sex BY HH_N_Avail_Labour HH_N_Avail_Labour_M HH_N_Avail_Labour_F
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+
+
+************************************************************************************
+************************************************************************************
+* END EXPORT
+************************************************************************************
+* OMSEND.
+OMSEND TAG=['KH02.SAV'].
+OMSEND TAG=['KH02.XLSX'].
+
+
+
+************************************************************************************
+************************************************************************************
+* CROSSTABS FOR KEN - PART THREE: 
+************************************************************************************
+************************************************************************************
+
+
+************************************************************************************
+** OUTPUT MANAGMENT 
+
+OMS
+  /SELECT TABLES
+  /IF COMMANDS=['Crosstabs'] SUBTYPES=['Crosstabulation']
+  /DESTINATION FORMAT=SAV NUMBERED=TableNumber_
+   OUTFILE='C:\Users\Dell\Documents\IBM\SPSS\Statistics\census\output\KH03.sav' VIEWER=YES
+  /TAG='KH03.SAV'.
+
+OMS
+  /SELECT TABLES
+  /IF COMMANDS=['Crosstabs'] SUBTYPES=['Crosstabulation']
+  /DESTINATION FORMAT=XLSX
+   OUTFILE='C:\Users\Dell\Documents\IBM\SPSS\Statistics\census\output\KH03.xlsx' VIEWER=YES
+  /TAG='KH03.XLSX'.
+
+************************************************************************************
+* HoH Farming HH
+
+CROSSTABS
+  /TABLES= batch_state_region BY HH_Type_HoH BY p04_sex BY HH_No_Vehicle
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+
+************************************************************************************
+* HoH or spouse Farming HH
+
+CROSSTABS
+  /TABLES= batch_state_region BY HH_Type_HoH_Sp BY p04_sex BY HH_No_Vehicle
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+
+************************************************************************************
+* Any relative Farming HH
+
+CROSSTABS
+  /TABLES= batch_state_region BY HH_Type_Any BY p04_sex BY HH_No_Vehicle
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+
+************************************************************************************
+* Any relative contributing Farming HH
+
+CROSSTABS
+  /TABLES= batch_state_region BY HH_Type_Any_contr BY p04_sex BY HH_No_Vehicle
+  /FORMAT=AVALUE TABLES
+  /CELLS=COUNT
+  /COUNT ROUND CELL.
+
+
+************************************************************************************
+************************************************************************************
+* END EXPORT
+************************************************************************************
+* OMSEND.
+OMSEND TAG=['KH03.SAV'].
+OMSEND TAG=['KH03.XLSX'].
+
+
 
 DATASET CLOSE HeadsOfHH.
 OUTPUT CLOSE *.
