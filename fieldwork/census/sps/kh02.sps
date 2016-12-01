@@ -138,9 +138,9 @@ aggregate outfile * mode = ADDVARIABLES
 /FarmingHH_F_Any = max(HH_F_Any)
 
 ************************************************************************************
-* Farming HH where any relative is any type of agricultral AND has the activity status 5 (contributing family worker
+* Farming HH where any relative is any type of agricultral AND has the activity status 5 (contributing family worker) OR 4 (household worker)
 
-COMPUTE HH_F_Any_contr =(((600 <= p23_occupation and p23_occupation  <700 ) or p23_occupation =921) and (p03_relationship <= 8) and (p22_activity_status=5 )).
+COMPUTE HH_F_Any_contr =(((600 <= p23_occupation and p23_occupation  <700 ) or p23_occupation =921) and (p03_relationship <= 8) and (p22_activity_status=5 or p22_activity_status=4 )).
 exe.
 
 aggregate outfile * mode = ADDVARIABLES
@@ -229,7 +229,7 @@ EXECUTE.
 * HH member, not Head, activity status = contributing or any farming occupation
 
 COMPUTE Avail_Labour_M = 0
-IF  (p04_sex = 1 AND p03_relationship NOT 1 & (p22_activity_status = 5 or ((600 <= p23_occupation and p23_occupation  <700 ) or p23_occupation =921)) Avail_Labour_M = 1. 
+IF  (p04_sex = 1 AND p03_relationship NE 1 & ((p22_activity_status = 5 or p22_activity_status = 4) or ((600 <= p23_occupation and p23_occupation  <700 ) or p23_occupation =921)) Avail_Labour_M = 1. 
 exe.
 
 aggregate outfile * mode = ADDVARIABLES
@@ -245,7 +245,7 @@ VARIABLE LABELS HH_N_Avail_Labour_M  'Number of available MALE agri labourers in
 * HH member, not Head, activity status = contributing or any farming occupation
 
 COMPUTE Avail_Labour_F = 0
-IF  (p04_sex = 2 AND p03_relationship NOT 1 & (p22_activity_status = 5 or ((600 <= p23_occupation and p23_occupation  <700 ) or p23_occupation =921)) Avail_Labour_F = 1. 
+IF  (p04_sex = 2 AND p03_relationship NE 1 & (p22_activity_status = 5 or ((600 <= p23_occupation and p23_occupation  <700 ) or p23_occupation =921)) Avail_Labour_F = 1. 
 exe.
 
 aggregate outfile * mode = ADDVARIABLES
@@ -507,8 +507,6 @@ OMSEND TAG=['KH03.SAV'].
 OMSEND TAG=['KH03.XLSX'].
 
 
-
-DATASET CLOSE HeadsOfHH.
 OUTPUT CLOSE *.
 
 
