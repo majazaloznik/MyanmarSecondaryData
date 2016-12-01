@@ -3,13 +3,13 @@ title: "Myanmar Fieldwork - MZ"
 author: "mz"
 date: "29.11.2016"
 output:
+  word_document:
+    reference_docx: StyleReference.docx
   pdf_document:
     number_sections: yes
     toc: yes
     toc_depth: 3
   html_document: default
-  word_document:
-    reference_docx: StyleReference.docx
 word_document html_document: default
 ---
 
@@ -914,5 +914,157 @@ Finally it was Ken's turn. Here were my questions and comments based on a quick 
 8. I've got only two more days in the office - but realistically that means that only what get's communicated between us by Thursday evening in the UK will affect what I get out...
 
 9. Questionnaire is settled. Waiting for clean version and double translation date tomorrow. 
+
+
+## Thursday 1.12.2016 - final census coding 
+
+### Comments on new version of questionnaire
+
+Finally recieved Final version of questionnaire - file `Draft Eng Questionaries V17.docx`, attached. It has now gone into the double translation process and should be back in one week. 
+
+
+### Data Analysis - George's Three sets of Crosstabs.
+
+OK, I hadn't recieved any replies or further instructions in time, so I proceeded as promised yesterday, but also added some additional tabulations at the end. Namely Part 3, the  disability indices by everything else set of tables, I ran them them for:
+
+* all over 18 (GL)
+* HoH over 60
+* HoH over 85
+* HoH over 60 and in a farming occupation
+
+Additionally all of these four sets of groups, I also did disability X age X sex tabulations. 
+
+THEN I GOT TO RUN THEM ON THE FULL CENSUS ;)
+
+So this was a pretty long and drawn out process, but very exciting. First I talked  the deputy director Sandar through the whole code, running it on the 1 percen sample, and explainign what it was doing and what the outputs were. Then we transferred it to her computer, where, after some further checks, we let it run. It took a good two hours to get through the whole thing, but ran it without a hitch! 
+
+The output tables have to be checked over by Khine Khine, the higher up director tomorrow, but there should be no issues - shouldn't be substantively, because there is nothing problematic about the tables at all, except that there are soo many. 
+
+
+### Remaining Tabulations
+
+In the mean time Sandar and me were trying to get the code for Sarah's tabulations to work on the other computer. The issue being that I had written it in R (in the hotel) and under the impression that we could use it on the full census as well. After several almost successfull attempts we had to cut our losses unfortunately and this meant switching everything back to SPSS... 
+
+So this meant that I have had to cold code the rest of the analysis at the hotel, and fingers crossed there are no major issues with it tomorrow, when there is very little room for error. It needs to be tested on the 1percent sample, explained to Sandar, and run on the full data set. And there are three of these:
+
+#### Sarah's Tables on coresiding children 
+
+Elaborating on the one I did yesterday, this is now for HoH over 60:
+
+**Type of child coresidence** - only son(s), only daughter(s), both kind, none. 
+
+X
+
+**number of disabilities** - 0-4
+
+X
+
+**age(5 year groups)** + **marital status**  + **gender**
+
+When I test it tomorrow I'll see if it might be possible to add more layers (region possibly as well). 
+
+
+I also did another table based on where she asked for "And children by number by age by occupation, by education, by urban rural for a second analysis"
+
+So this is [for women ever married - ovre 15]:
+
+**Numnber of children ever born** 
+
+X 
+
+
+**age(5 year groups)**
+
+X 
+
+**p05_age_binned ** 
+
+X 
+
+**Occupation ** reduced to 9 categories + **education** reduced to 7 categories + **urban/rural**
+
+
+So these are two sets of three tables, each with three dimensions. 
+
+
+#### Ken's tables
+
+I had not heard anything back after asking for clarification yesterday, so this is what it is. 
+
+1. I try out four different types of definition of a farming HH. (will explain later)
+
+2. Then for each of them define the HH type 
++ not farming
++ farming and HoH over 60
++ farming ahd HoH under 60 and parent(s)/inlaw coresiding
++ farming ahd HoH under 60 and parent(s)/inlaw not coresiding
+
+3. Then I try a rather involved way of counting available labour in the HH.. But basically it's  people of either agricultural occupations OR of activity status "contributing" or "household". And I should have available male and female workers - this is **number of available agricultural workers per HH**
+
+4. The I also construct a **No motorised vechicle** from three types of vehicle ownership. 
+
+Then the crosstabulaitons ideally will be:
+
+* PART ONE: **Age** X **Gender** X **disability** X **HH type** **region**
+
+* PART Two: **M/F/Total number of available labour in HH ** X **HH type** X **region** X **HoH sex**
+
+* PART Three: ***HH type** X **region** X **No motorised vechicle** X **HoH sex**
+
+There is an additional bit for Ken in the migration section, which is the last one:
+
+
+
+#### Migration tables - a.k.a. mainly John Knodel's tables 
+
+OK, so first of all, international migration is off the table. There is simply no time, and matching the households for 50+ million households is an endevaour at the best of times. 
+
+As far as internal migration is concerned, I got one instruction to get "as many variables about migrating persons", so I went instead with Knodel's table, as a starting point at least. 
+
+The setup are a bunch of small tables, most for all 15+, some for sub groups:
+
+**region** X **moved** X **sex**  [all]
+
+**region** X **moved** X **over/under 60**   [all]
+
+**region** X **moved** X **urban/rural** [all]
+
+**region** X **over/under 60** X **reason**  [moved]
+
+**region** X **mig type** X **age group**  [all]
+
+**region** X **moved** X **urban/rural** [over60]
+
+**region** X **moved** X **sex**  [rural-urban]
+
+**region** X **moved** X **over/under 60**    [rural-urban]
+
+**region** X **moved** X **sex**  [economic migrants]
+
+**region** X **moved** X **over/under 60**    [economic migrants]
+
+**region** X **moved** X **urban/rural**    [economic migrants]
+
+
+So we have all those, and this is all of JK request (apart from the internaitonal one)
+
+Then additionally, based on Ken's "left rural areas [..] within last n years? rural-urban: age/gender/education. if rural rural, what are they doing now?"
+
+So based on my understanding of that, he gets: 
+
+
+**region** X **duratoin** X **sex**   [rural-urban]
+
+**region** X **duratoin** X **age groups**   [rural-urban]
+
+**region** X **duratoin** X **education**   [rural-urban]
+
+and 
+
+**region** X **type of migration** X **activity status**   [rural-urban]
+
+
+Fingers crossed we get all of this through!
+
 
 

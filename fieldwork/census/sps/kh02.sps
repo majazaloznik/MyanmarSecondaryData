@@ -245,7 +245,7 @@ VARIABLE LABELS HH_N_Avail_Labour_M  'Number of available MALE agri labourers in
 * HH member, not Head, activity status = contributing or any farming occupation
 
 COMPUTE Avail_Labour_F = 0
-IF  (p04_sex = 2 AND p03_relationship NE 1 & (p22_activity_status = 5 or ((600 <= p23_occupation and p23_occupation  <700 ) or p23_occupation =921)) Avail_Labour_F = 1. 
+IF  (p04_sex = 2 AND p03_relationship NE 1 & ((p22_activity_status = 5 or p22_activity_status = 4) or ((600 <= p23_occupation and p23_occupation  <700 ) or p23_occupation =921)) Avail_Labour_F = 1. 
 exe.
 
 aggregate outfile * mode = ADDVARIABLES
@@ -262,10 +262,6 @@ COMPUTE HH_N_Avail_Labour = HH_N_Avail_Labour_M + HH_N_Avail_Labour_F.
 EXE.
 
 VARIABLE LABELS HH_N_Avail_Labour 'Total Number of available agri labourers in HH'.
-
-
-
-
 
 
 ************************************************************************************

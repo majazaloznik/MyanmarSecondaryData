@@ -201,9 +201,6 @@ OMSEND TAG=['SH01.XLSX'].
 
 
 
-
-
-
 ************************************************************************************
 * select only Heads of households over 60 - i.e. one row per HH
 USE ALL.

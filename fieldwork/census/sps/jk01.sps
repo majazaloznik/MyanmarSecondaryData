@@ -189,12 +189,17 @@ CROSSTABS
 ************************************************************************************
 * Table 4
 
+COMPUTE filter_$=(p11_birth_township_dummy = 1).
+FILTER BY filter_$.
+exe.
+
 CROSSTABS
-  /TABLES= batch_state_region BY p11_birth_township_dummy BY p16_reason_for_movement
+  /TABLES= batch_state_region BY p05_age_c2BY p16_reason_for_movement
   /FORMAT=AVALUE TABLES
   /CELLS=COUNT
   /COUNT ROUND CELL.
 
+Filter off. 
 
 COMPUTE filter_$=(p05_age_c2 = 2).
 FILTER BY filter_$.
@@ -205,15 +210,6 @@ exe.
 
 CROSSTABS
   /TABLES= batch_state_region BY p11_birth_township_dummy BY batch_urban_rural
-  /FORMAT=AVALUE TABLES
-  /CELLS=COUNT
-  /COUNT ROUND CELL.
-
-************************************************************************************
-* Table 4 over 60 
-
-CROSSTABS
-  /TABLES= batch_state_region BY p11_birth_township_dummy BY p16_reason_for_movement
   /FORMAT=AVALUE TABLES
   /CELLS=COUNT
   /COUNT ROUND CELL.
