@@ -5,3 +5,6 @@
 sources/literature/
 sources/data/original
 reports/old
+*.docx
+*.pdf
+sources/focus groups
