@@ -28,7 +28,15 @@ map.path <- "sources/data/original/maps"
 # unzip(temp, exdir = map.path)
 ShpMMRTownship <- readOGR(dsn=map.path, "myanmar_township_boundaries")
 
-## 01.2 merge regions/states 
+## 01.2 villages
+map.path <- "sources/data/original/maps"
+#http://geonode.themimu.info/layers/geonode%3Amagway_region_village_points
+#http://geonode.themimu.info/layers/geonode%3Aayeyarwady_region_village_points
+#http://geonode.themimu.info/layers/geonode%3AMandalay_region_village_points
+PntMagway <- readOGR(dsn=map.path, "magway_region_village_points")
+PntAyeyarwady <- readOGR(dsn=map.path, "ayeyarwady_region_village_points")
+PntMandalay <- readOGR(dsn=map.path, "mandalay_region_village_points")
+
 
 ## 01.1 census - population based dataset
 ###############################################################################
@@ -110,5 +118,5 @@ write.csv(irri.data, file = "sources/data/clean/irri.data.csv")
 ###############################################################################
 # ShpMMRTownship@data <- left_join(ShpMMRTownship@data, estimates.data, by = c("TS_PCODE"="MIMU...Township.Pcode"))
 # ShpMMRTownship@data <- left_join(ShpMMRTownship@data, household.data, by = c("TS_PCODE"="MIMU - Township Pcode"))
-# save(ShpMMRTownship, file = "sources/data/clean/pop.map.RData")
+ save(ShpMMRTownship, PntMagway, PntAyeyarwady,PntMandalay , file = "sources/data/clean/pop.map.RData")
 range(unlist(ShpMMRTownship@data[306]), rm.na = TRUE)

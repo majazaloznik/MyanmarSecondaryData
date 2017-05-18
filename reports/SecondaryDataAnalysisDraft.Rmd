@@ -1,14 +1,17 @@
 ---
 title: "Myanmar Secondary Data Analysis - Outline"
-author: mz
+author: "mz"
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: 3
+  word_document:
+    fig_caption: yes
+    fig_height: 4.5
+    fig_width: 5
+    reference_docx: StyleReference.docx
+    toc: yes
 bibliography: ../sources/myanmar-mz.bib
-output: 
- word_document:
-  reference_docx: StyleReference.docx
-  fig_width: 5
-  fig_height: 4.5
-  fig_caption: true
-  toc: true
 ---
 ```{r setup, include = FALSE }
 require(rgdal)
@@ -107,7 +110,7 @@ All of this applies to the household level data as well. A list of the variables
 
 Of course a combination is also possible, as for example in Figure 4, which looks at the proportion of female headed households across the 330 townships, and also adds a zoomed map of both the Yangon region and Naypyitaw, and a histograms that let us compare the distribution within each of the regions with the distribution nationally.
 
-```{r fig_testmap, include = TRUE, echo = FALSE, results="hide", warning = FALSE, fig.width=8, figh.height=8,fig.keep='high', fig.cap="Figure 4: Average size of  in 330 townships (left), in Nat Pyi Taw middle top and Yangon middle bottom, along with histograpms showing the relative distirbutions of each region compared to the national one. "}
+```{r fig_testmap, include = TRUE, echo = FALSE, results="hide", warning = FALSE, fig.width=8, figh.height=8,fig.keep='high', fig.cap="Figure 4: Mean household size in 330 townships (left), in Mandalay top and Ayeyarwady bottom, along with histograpms showing the relative distirbutions of each region's townships compared to the national one. "}
 m <- cbind(c(1,1), c(2,3), c(4,5))
 layout(m)
 
